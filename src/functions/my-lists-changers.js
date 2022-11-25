@@ -15,4 +15,20 @@ const myListsDeleteToDo = (
   }
 };
 
-export { myListsDeleteToDo };
+// If deleteMyList is true, iterate over every key in myListName and change it to undefined
+// Also apply toDoDelete() to every todo in the list
+const myListsDelete = (myListName, deleteMyList = true) => {
+  if (deleteMyList) {
+    // Clear every todo in the list
+    for (let key in myListName.todos) {
+      toDoDelete(myListName.todos[key]);
+    }
+
+    // Clear the list
+    for (let key in myListName) {
+      myListName[key] = undefined;
+    }
+  }
+};
+
+export { myListsDeleteToDo, myListsDelete };

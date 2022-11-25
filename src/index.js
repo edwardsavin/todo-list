@@ -11,4 +11,7 @@ import {
   toDoDelete,
 } from "./functions/todo-changers";
 import { myListsFactory } from "./functions/my-lists-factory-function";
-import { myListsDeleteToDo } from "./functions/my-lists-changers";
+import {
+  myListsDeleteToDo,
+  myListsDelete,
+} from "./functions/my-lists-changers";
