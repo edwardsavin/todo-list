@@ -41,8 +41,8 @@ const toDoChangeNotes = (toDoName, newNote) => {
 };
 
 // Change todo object.subtasks
-const toDoChangeSubtasks = (toDoName, newSubTask) => {
-  toDoName.subtasks = newSubTask;
+const toDoChangeSubtasks = (toDoName, ...newSubtasks) => {
+  toDoName.subtasks = newSubtasks;
 };
 
 export {
