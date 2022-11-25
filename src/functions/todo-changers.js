@@ -1,3 +1,5 @@
+import { toDoFactory } from "./todo-factory-function";
+
 // Change todo object.title
 const toDoChangeTitle = (toDoName, newTitle) => {
   toDoName.title = newTitle;
@@ -45,6 +47,15 @@ const toDoChangeSubtasks = (toDoName, ...newSubtasks) => {
   toDoName.subtasks = newSubtasks;
 };
 
+// If deleteToDo is true, iterate over every key in toDoName and change it to undefined
+const toDoDelete = (toDoName, deleteToDo = true) => {
+  if (deleteToDo) {
+    for (let key in toDoName) {
+      toDoName[key] = undefined;
+    }
+  }
+};
+
 export {
   toDoChangeTitle,
   toDoChangeDescription,
@@ -53,4 +64,5 @@ export {
   toDoChangePriority,
   toDoChangeNotes,
   toDoChangeSubtasks,
+  toDoDelete,
 };

@@ -8,4 +8,5 @@ import {
   toDoChangePriority,
   toDoChangeNotes,
   toDoChangeSubtasks,
+  toDoDelete,
 } from "./functions/todo-changers";
