@@ -31,4 +31,15 @@ const myListsDelete = (myListName, deleteMyList = true) => {
   }
 };
 
-export { myListsDeleteToDo, myListsDelete };
+// Append todo to list
+const myListsAddToDo = (myListName, toDoName) => {
+  let toDosLength = myListName.todos.length;
+
+  if (toDosLength === 0) {
+    myListName.todos[0] = toDoName;
+  } else {
+    myListName.todos[toDosLength] = toDoName;
+  }
+};
+
+export { myListsDeleteToDo, myListsDelete, myListsAddToDo };

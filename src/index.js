@@ -14,4 +14,5 @@ import { myListsFactory } from "./functions/my-lists-factory-function";
 import {
   myListsDeleteToDo,
   myListsDelete,
+  myListsAddToDo,
 } from "./functions/my-lists-changers";
