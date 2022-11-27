@@ -1,3 +1,44 @@
+:root {
+  --clr-primary-400: hsl(210, 11%, 15%);
+
+  --clr-neutral-100: hsl(210, 17%, 98%);
+  --clr-neutral-400: hsl(210, 17%, 93%);
+
+  --clr-accent-400: hsl(210, 10%, 23%);
+  --clr-accent-700: hsl(180, 75%, 28%);
+
+  --ff-primary: "Space Grotesk", -apple-system, BlinkMacSystemFont, avenir next,
+    avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto,
+    arial, sans-serif;
+
+  --ff-body: var(--ff-primary);
+  --ff-heading: var(--ff-primary);
+
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-bold: 700;
+
+  --fs-200: 0.5rem;
+  --fs-300: 0.75rem;
+  --fs-350: 0.875rem;
+  --fs-400: 1rem;
+  --fs-500: 1.25rem;
+  --fs-600: 1.5rem;
+  --fs-650: 1.6rem;
+  --fs-700: 1.75rem;
+  --fs-800: 2rem;
+  --fs-900: 2.25rem;
+  --fs-1000: 2.5rem;
+  --fs-1100: 2.75rem;
+  --fs-1200: 3rem;
+  --fs-1600: 4rem;
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("./fonts/SpaceGrotesk-VariableFont_wght.ttf") format("truetype");
+}
+
 /* Box sizing rules */
 *,
 *::before,
