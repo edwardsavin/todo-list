@@ -16,3 +16,6 @@ import {
   myListsDelete,
   myListsAddToDo,
 } from "./functions/mylists/my-lists-changers";
+import { userFactory, user1 } from "./functions/user/user";
+import { userChangeName } from "./functions/user/user-functions";
+import { elementUserName, updateUserName } from "./blocks/block-user-name";

@@ -104,3 +104,10 @@ svg {
     scroll-behavior: auto !important;
   }
 }
+
+textarea {
+  border: none;
+  background-color: transparent;
+  resize: none;
+  outline: none;
+}

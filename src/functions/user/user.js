@@ -1,3 +1,7 @@
-let userName = "Enter Name";
+const userFactory = (userId, userName) => {
+  return { userId, userName };
+};
 
-export { userName };
+let user1 = userFactory("0", "Enter Name")
+
+export { userFactory, user1 };
