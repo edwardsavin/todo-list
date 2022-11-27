@@ -1,4 +1,4 @@
-import { toDoDelete } from "./todo-changers";
+import { toDoDelete } from "../todo/todo-changers";
 
 // Calls toDoDelete() to clear the todo's values
 // Delete the todo from myList

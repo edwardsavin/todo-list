@@ -1,5 +1,5 @@
 import "./style.css";
-import { toDoFactory } from "./functions/todo-factory-function";
+import { toDoFactory } from "./functions/todo/todo-factory-function";
 import {
   toDoChangeTitle,
   toDoChangeDescription,
@@ -9,10 +9,10 @@ import {
   toDoChangeNotes,
   toDoChangeSubtasks,
   toDoDelete,
-} from "./functions/todo-changers";
-import { myListsFactory } from "./functions/my-lists-factory-function";
+} from "./functions/todo/todo-changers";
+import { myListsFactory } from "./functions/mylists/my-lists-factory-function";
 import {
   myListsDeleteToDo,
   myListsDelete,
   myListsAddToDo,
-} from "./functions/my-lists-changers";
+} from "./functions/mylists/my-lists-changers";
