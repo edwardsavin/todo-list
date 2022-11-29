@@ -1,6 +1,8 @@
 // Create a list object that can store multiple todos
-const myListsFactory = (title, ...todos) => {
+const myListsFactory = (title, todos = {}) => {
   return { title, todos };
 };
 
-export { myListsFactory };
+let mainList = {};
+
+export { myListsFactory, mainList };

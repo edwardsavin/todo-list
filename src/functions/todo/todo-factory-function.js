@@ -5,7 +5,7 @@ const toDoFactory = (
   dueDate,
   priority,
   notes,
-  subtasks
+  subtasks = {}
 ) => {
   return {
     title,
@@ -18,4 +18,6 @@ const toDoFactory = (
   };
 };
 
-export { toDoFactory };
+let mainToDo = {};
+
+export { toDoFactory, mainToDo };

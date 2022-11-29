@@ -1,45 +1,48 @@
+import { myListsFactory, mainList } from "./my-lists-factory-function";
 import { toDoDelete } from "../todo/todo-changers";
 
-// Calls toDoDelete() to clear the todo's values
-// Delete the todo from myList
-const myListsDeleteToDo = (
-  myListName,
-  toDoIndex,
-  deleteToDoFromList = true
-) => {
-  let toDoName = myListName.todos[toDoIndex];
-
-  if (deleteToDoFromList) {
-    toDoDelete(toDoName, true);
-    myListName.todos.splice(toDoIndex, 1);
+// Send list to factory and append to mainList;
+const myListsSendToFactory = (newListTitle) => {
+  if (newListTitle !== null) {
+    mainList[newListTitle] = myListsFactory(newListTitle);
   }
 };
 
-// If deleteMyList is true, iterate over every key in myListName and change it to undefined
+// Delete the todo from myList
+// Calls toDoDelete() to delete the todo
+const myListsDeleteToDo = (
+  myListName,
+  toDoName,
+  deleteToDoFromList = true
+) => {
+  if (deleteToDoFromList) {
+    delete myListName.todos[toDoName];
+    toDoDelete(toDoName, true);
+  }
+};
+
+// If deleteMyList is true, delete the list and remove it from mainList
 // Also apply toDoDelete() to every todo in the list
 const myListsDelete = (myListName, deleteMyList = true) => {
   if (deleteMyList) {
-    // Clear every todo in the list
-    for (let key in myListName.todos) {
-      toDoDelete(myListName.todos[key]);
+    // Delete every todo in the list
+    for (let key in mainList[myListName].todos) {
+      toDoDelete(key, true);
     }
-
-    // Clear the list
-    for (let key in myListName) {
-      myListName[key] = undefined;
-    }
+    // Delete the list from mainList
+    delete mainList[myListName];
   }
 };
 
-// Append todo to list
+// Append todo to todos object
 const myListsAddToDo = (myListName, toDoName) => {
-  let toDosLength = myListName.todos.length;
-
-  if (toDosLength === 0) {
-    myListName.todos[0] = toDoName;
-  } else {
-    myListName.todos[toDosLength] = toDoName;
-  }
+  let myListTodos = myListName.todos;
+  myListTodos[toDoName.title] = toDoName;
 };
 
-export { myListsDeleteToDo, myListsDelete, myListsAddToDo };
+export {
+  myListsDeleteToDo,
+  myListsDelete,
+  myListsAddToDo,
+  myListsSendToFactory,
+};

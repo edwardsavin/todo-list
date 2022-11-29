@@ -1,4 +1,27 @@
-import { toDoFactory } from "./todo-factory-function";
+import { toDoFactory, mainToDo } from "./todo-factory-function";
+
+// Send todo to factory and append to mainToDo;
+const toDoSendToFactory = (
+  newToDoTitle,
+  description,
+  checkBox,
+  dueDate,
+  priority,
+  notes,
+  subtasks
+) => {
+  if (newToDoTitle !== null) {
+    mainToDo[newToDoTitle] = toDoFactory(
+      newToDoTitle,
+      description,
+      checkBox,
+      dueDate,
+      priority,
+      notes,
+      subtasks
+    );
+  }
+};
 
 // Change todo object.title
 const toDoChangeTitle = (toDoName, newTitle) => {
@@ -42,27 +65,27 @@ const toDoChangeNotes = (toDoName, newNote) => {
   toDoName.notes = newNote;
 };
 
-// Change todo object.subtasks
-const toDoChangeSubtasks = (toDoName, ...newSubtasks) => {
-  toDoName.subtasks = newSubtasks;
+// Add todo to object.subtasks
+const toDoAddSubtask = (toDoName, newSubtask) => {
+  let subTaskLocation = Object.keys(toDoName.subtasks).length;
+  toDoName.subtasks[subTaskLocation] = newSubtask;
 };
 
-// If deleteToDo is true, iterate over every key in toDoName and change it to undefined
+// If deleteToDo is true, delete every todo from mainToDo
 const toDoDelete = (toDoName, deleteToDo = true) => {
   if (deleteToDo) {
-    for (let key in toDoName) {
-      toDoName[key] = undefined;
-    }
+    delete mainToDo[toDoName];
   }
 };
 
 export {
+  toDoSendToFactory,
   toDoChangeTitle,
   toDoChangeDescription,
   toDoChangeCheckBox,
   toDoChangeDueDate,
   toDoChangePriority,
   toDoChangeNotes,
-  toDoChangeSubtasks,
+  toDoAddSubtask,
   toDoDelete,
 };
