@@ -9,6 +9,8 @@ import {
   toDoChangePriority,
   toDoChangeNotes,
   toDoAddSubtask,
+  toDoDeleteSubTask,
+  toDoChangeSubTaskContent,
   toDoDelete,
 } from "./functions/todo/todo-changers";
 import {

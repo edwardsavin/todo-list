@@ -68,7 +68,26 @@ const toDoChangeNotes = (toDoName, newNote) => {
 // Add todo to object.subtasks
 const toDoAddSubtask = (toDoName, newSubtask) => {
   let subTaskLocation = Object.keys(toDoName.subtasks).length;
-  toDoName.subtasks[subTaskLocation] = newSubtask;
+  if (toDoName.subtasks[subTaskLocation]) {
+    subTaskLocation += 1;
+    toDoName.subtasks[subTaskLocation] = newSubtask;
+  } else {
+    toDoName.subtasks[subTaskLocation] = newSubtask;
+  }
+};
+
+const toDoDeleteSubTask = (toDoName, subTaskIndex, deleteSubtask = true) => {
+  if (deleteSubtask) {
+    delete toDoName.subtasks[subTaskIndex];
+  }
+};
+
+const toDoChangeSubTaskContent = (
+  toDoName,
+  subTaskIndex,
+  newSubTaskContent
+) => {
+  toDoName.subtasks[subTaskIndex] = newSubTaskContent;
 };
 
 // If deleteToDo is true, delete every todo from mainToDo
@@ -87,5 +106,7 @@ export {
   toDoChangePriority,
   toDoChangeNotes,
   toDoAddSubtask,
+  toDoDeleteSubTask,
+  toDoChangeSubTaskContent,
   toDoDelete,
 };
