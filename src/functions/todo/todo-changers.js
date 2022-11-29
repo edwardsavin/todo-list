@@ -76,12 +76,14 @@ const toDoAddSubtask = (toDoName, newSubtask) => {
   }
 };
 
+// If deleteSubtask is true, delete the subtask from todo
 const toDoDeleteSubTask = (toDoName, subTaskIndex, deleteSubtask = true) => {
   if (deleteSubtask) {
     delete toDoName.subtasks[subTaskIndex];
   }
 };
 
+// Change the content of the subtask with the newSubTaskContent
 const toDoChangeSubTaskContent = (
   toDoName,
   subTaskIndex,
@@ -90,7 +92,7 @@ const toDoChangeSubTaskContent = (
   toDoName.subtasks[subTaskIndex] = newSubTaskContent;
 };
 
-// If deleteToDo is true, delete every todo from mainToDo
+// If deleteToDo is true, delete todo from mainToDo
 const toDoDelete = (toDoName, deleteToDo = true) => {
   if (deleteToDo) {
     delete mainToDo[toDoName];

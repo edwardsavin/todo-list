@@ -105,9 +105,9 @@ svg {
   }
 }
 
-textarea {
+.text-input {
   border: none;
-  background-color: transparent;
+  background-color: white;
   resize: none;
   outline: none;
 }
