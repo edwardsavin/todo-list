@@ -1,20 +1,35 @@
 import { myListsFactory, mainList } from "./my-lists-factory-function";
 import { toDoDelete } from "../todo/todo-changers";
 
-// Send list to factory and append to mainList;
+// If list doesn't already exist, send it to factory and append to mainList
 const myListsSendToFactory = (newListTitle) => {
-  if (newListTitle !== null) {
+  let listAlreadyExists = myListsCheckIfListExists(newListTitle);
+
+  if (newListTitle !== null && listAlreadyExists === false) {
     mainList[newListTitle] = myListsFactory(newListTitle);
+    console.log("NOT EQUAL, created");
+  } else if (listAlreadyExists === true) {
+    console.log("EQUAL, not created");
   }
+};
+
+// Check if the list already exists in mainList
+// If list detected, return true
+const myListsCheckIfListExists = (myListName) => {
+  let listDetected = false;
+
+  Object.keys(mainList).forEach((list) => {
+    if (list.toString() === myListName.toString()) {
+      listDetected = true;
+    }
+  });
+
+  return listDetected;
 };
 
 // Delete the todo from myList
 // Calls toDoDelete() to delete the todo
-const myListsDeleteToDo = (
-  myListName,
-  toDoName,
-  deleteToDoFromList = true
-) => {
+const myListsDeleteToDo = (myListName, toDoName, deleteToDoFromList = true) => {
   if (deleteToDoFromList) {
     delete myListName.todos[toDoName];
     toDoDelete(toDoName, true);
@@ -45,4 +60,5 @@ export {
   myListsDelete,
   myListsAddToDo,
   myListsSendToFactory,
+  myListsCheckIfListExists,
 };
