@@ -28,3 +28,8 @@ import { userFactory, user1 } from "./functions/user/user";
 import { userChangeName } from "./functions/user/user-functions";
 import { elementUserName, updateUserName } from "./blocks/block-user-name";
 import { elementCreateListButton } from "./blocks/block-my-lists";
+import { addListInActiveListContainer } from "./blocks/block-my-lists-elements/active-lists-container";
+
+myListsSendToFactory("Personal");
+myListsSendToFactory("Work");
+myListsSendToFactory("Grocery List");

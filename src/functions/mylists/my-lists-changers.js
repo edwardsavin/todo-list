@@ -1,15 +1,20 @@
 import { myListsFactory, mainList } from "./my-lists-factory-function";
 import { toDoDelete } from "../todo/todo-changers";
+import { addListInActiveListContainer } from "../../blocks/block-my-lists-elements/active-lists-container";
 
 // If list doesn't already exist, send it to factory and append to mainList
 const myListsSendToFactory = (newListTitle) => {
   let listAlreadyExists = myListsCheckIfListExists(newListTitle);
 
   if (newListTitle !== null && listAlreadyExists === false) {
-    mainList[newListTitle] = myListsFactory(newListTitle);
-    console.log("NOT EQUAL, created");
-  } else if (listAlreadyExists === true) {
-    console.log("EQUAL, not created");
+    // Format one or more spaces into a dash "-"
+    let formattedNewListTitle = newListTitle
+      .replace(/  +/g, " ")
+      .replaceAll(" ", "-");
+
+    mainList[formattedNewListTitle] = myListsFactory(formattedNewListTitle);
+
+    addListInActiveListContainer(newListTitle);
   }
 };
 
@@ -19,8 +24,9 @@ const myListsCheckIfListExists = (myListName) => {
   let listDetected = false;
 
   Object.keys(mainList).forEach((list) => {
-    if (list.toString() === myListName.toString()) {
+    if (list.toString().toLowerCase() === myListName.toString().toLowerCase()) {
       listDetected = true;
+      alert("A list with this name exists already");
     }
   });
 

@@ -1,9 +1,9 @@
 import { addElementCreateListModal } from "./block-my-lists-elements/create-list-modal";
-const elementMyListsContainer = document.querySelector(".my-lists-container");
-
-const elementCreateList = document.querySelector(
+const elementCreateListButton = document.querySelector(
   "#my-lists-container-header-add-list"
 );
-elementCreateList.addEventListener("click", addElementCreateListModal);
+elementCreateListButton.addEventListener("click", addElementCreateListModal);
 
-export { elementCreateList };
+const elementActiveLists = document.querySelector("#my-lists-container-lists");
+
+export { elementCreateListButton, elementActiveLists };
