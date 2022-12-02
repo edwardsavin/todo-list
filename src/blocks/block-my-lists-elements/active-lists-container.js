@@ -3,7 +3,7 @@ import { mainList } from "../../functions/mylists/my-lists-factory-function";
 
 // Create a new <li> with textContent and id of created list
 // Append it to my lists container
-const addListInActiveListContainer = () => {
+const addListInActiveListContainer = (newListTitle) => {
   const activeLists = document.getElementById(
     "my-lists-container-lists"
   ).childNodes;
@@ -15,7 +15,12 @@ const addListInActiveListContainer = () => {
   // Check if list already present in DOM
   Object.keys(mainList).forEach((list) => {
     listId = `list-${list}`.toLowerCase();
-    listTitle = list;
+    // Capitalize only the first letter
+    listTitle =
+      newListTitle.toLowerCase().charAt(0).toUpperCase() +
+      newListTitle.slice(1);
+
+    console.log(typeof listTitle);
 
     activeLists.forEach((element) => {
       if (element.id.toString() === listId) {
@@ -30,7 +35,6 @@ const addListInActiveListContainer = () => {
   if (!listAlreadyInActiveList) {
     let newList = document.createElement("li");
     newList.setAttribute("id", listId);
-    // TODO: Find a way to use the unformatted (before myListsSendToFactory() -> formattedNewListTitle) text
     newList.textContent = listTitle;
 
     elementActiveLists.appendChild(newList);
