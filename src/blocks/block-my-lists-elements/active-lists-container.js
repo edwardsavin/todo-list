@@ -20,8 +20,6 @@ const addListInActiveListContainer = (newListTitle) => {
       newListTitle.toLowerCase().charAt(0).toUpperCase() +
       newListTitle.slice(1);
 
-    console.log(typeof listTitle);
-
     activeLists.forEach((element) => {
       if (element.id.toString() === listId) {
         listAlreadyInActiveList = true;
@@ -41,4 +39,40 @@ const addListInActiveListContainer = (newListTitle) => {
   }
 };
 
-export { addListInActiveListContainer };
+// Show and update the number of todos from each list on the DOM
+const updateListTodoCount = () => {
+  Object.keys(mainList).forEach((list) => {
+    // Get the number of todos in the current list
+    const todosCount = Object.keys(mainList[list].todos).length;
+
+    const todosCountContainerElement = createTodosCountElement(todosCount);
+    const listTitleElement = document.querySelector(
+      `#list-${list.toLowerCase()}`
+    );
+
+    // Check if listTitleElement exists
+    if (!listTitleElement) {
+      return;
+    }
+
+    // Check if the element with the class "todos-number" already exists in listTitleElement
+    // If the element already exists, don't create it again
+    if (!listTitleElement.querySelector(".todos-number")) {
+      listTitleElement.appendChild(todosCountContainerElement);
+    }
+  });
+};
+
+const createTodosCountElement = (todosCount) => {
+  const todosCountElement = document.createElement("div");
+  todosCountElement.classList.add("todos-number");
+  todosCountElement.textContent = `${todosCount}`;
+
+  if (todosCount === 0) {
+    todosCountElement.style.display = "none";
+  }
+
+  return todosCountElement;
+};
+
+export { addListInActiveListContainer, updateListTodoCount };
