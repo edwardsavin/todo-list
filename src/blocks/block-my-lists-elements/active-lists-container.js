@@ -39,6 +39,17 @@ const addListInActiveListContainer = (newListTitle) => {
   }
 };
 
+// Delete list from DOM
+const deleteListFromActiveListContainer = (listTitle) => {
+  const elementList = document.getElementById(
+    `list-${listTitle}`.toLowerCase()
+  );
+  const elementListParent = elementList.parentElement;
+
+  // Remove the elementList from the DOM
+  elementListParent.removeChild(elementList);
+};
+
 // Show and update the number of todos from each list on the DOM
 const updateListTodoCount = () => {
   Object.keys(mainList).forEach((list) => {
@@ -75,4 +86,8 @@ const createTodosCountElement = (todosCount) => {
   return todosCountElement;
 };
 
-export { addListInActiveListContainer, updateListTodoCount };
+export {
+  addListInActiveListContainer,
+  deleteListFromActiveListContainer,
+  updateListTodoCount,
+};

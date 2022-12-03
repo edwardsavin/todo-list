@@ -1,6 +1,9 @@
 import { myListsFactory, mainList } from "./my-lists-factory-function";
 import { toDoDelete } from "../todo/todo-changers";
-import { addListInActiveListContainer } from "../../blocks/block-my-lists-elements/active-lists-container";
+import {
+  addListInActiveListContainer,
+  deleteListFromActiveListContainer,
+} from "../../blocks/block-my-lists-elements/active-lists-container";
 
 // If list doesn't already exist, send it to factory and append to mainList
 const myListsSendToFactory = (newListTitle) => {
@@ -52,6 +55,7 @@ const myListsDelete = (myListName, deleteMyList = true) => {
     }
     // Delete the list from mainList
     delete mainList[myListName];
+    deleteListFromActiveListContainer(myListName);
   }
 };
 
