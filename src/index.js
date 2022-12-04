@@ -57,4 +57,3 @@ updateListTodoCount();
 myListsDelete("Grocery-List");
 
 createListToolBar("Personal", true);
-myListsDeleteAllToDos("Personal", true)
