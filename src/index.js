@@ -33,6 +33,7 @@ import {
   addListInActiveListContainer,
   updateListTodoCount,
 } from "./blocks/block-my-lists-elements/active-lists-container";
+import { createListToolBar } from "./blocks/block-list-toolbar";
 
 myListsSendToFactory("Personal");
 myListsSendToFactory("Work");
@@ -54,3 +55,6 @@ myListsAddToDo(mainList["Grocery-List"], mainToDo["test6"]);
 updateListTodoCount();
 
 myListsDelete("Grocery-List");
+
+createListToolBar("Personal", true);
+myListsDeleteAllToDos("Personal", true)

@@ -45,12 +45,12 @@ const myListsDeleteToDo = (myListName, toDoName, deleteToDoFromList = true) => {
   }
 };
 
-// Apply toDoDelete() to every todo in the list
+// Apply myListsDeleteToDo() to every todo in the list
 const myListsDeleteAllToDos = (myListName, deleteAllTodos = true) => {
   if (deleteAllTodos) {
     // Delete every todo in the list
     for (let key in mainList[myListName].todos) {
-      toDoDelete(key, true);
+      myListsDeleteToDo(mainList[myListName], key);
     }
   }
 };
