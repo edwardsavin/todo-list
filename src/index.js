@@ -19,6 +19,7 @@ import {
 } from "./functions/mylists/my-lists-factory-function";
 import {
   myListsDeleteToDo,
+  myListsDeleteAllToDos,
   myListsDelete,
   myListsAddToDo,
   myListsSendToFactory,

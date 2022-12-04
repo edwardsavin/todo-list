@@ -7,28 +7,34 @@
     <title>Todo List</title>
   </head>
   <body>
-    <div class="user">
-      <textarea name="user-name" id="user-name" class="text-input">
+    <main id="main">
+      <div id="side-bar">
+        <div class="user">
+          <textarea name="user-name" id="user-name" class="text-input">
 Test</textarea
-      >
-    </div>
+          >
+        </div>
 
-    <div class="my-lists-container">
-      <div class="my-lists-container-header">
-        <div class="my-lists-container-header-title">My lists</div>
-        <button
-          type="button"
-          id="my-lists-container-header-add-list"
-          class="button"
-        >
-          +
-        </button>
+        <div class="my-lists-container">
+          <div class="my-lists-container-header">
+            <div class="my-lists-container-header-title">My lists</div>
+            <button
+              type="button"
+              id="my-lists-container-header-add-list"
+              class="button"
+            >
+              +
+            </button>
+          </div>
+
+          <div class="my-lists-container-main">
+            <ul id="my-lists-container-lists"></ul>
+          </div>
+        </div>
       </div>
 
-      <div class="my-lists-container-main">
-        <ul id="my-lists-container-lists"></ul>
-      </div>
-    </div>
+      <article class="list-extended-view"></article>
+    </main>
     <script src="main.js"></script>
   </body>
 </html>

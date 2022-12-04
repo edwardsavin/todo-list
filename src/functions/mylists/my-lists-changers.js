@@ -45,14 +45,22 @@ const myListsDeleteToDo = (myListName, toDoName, deleteToDoFromList = true) => {
   }
 };
 
-// If deleteMyList is true, delete the list and remove it from mainList
-// Also apply toDoDelete() to every todo in the list
-const myListsDelete = (myListName, deleteMyList = true) => {
-  if (deleteMyList) {
+// Apply toDoDelete() to every todo in the list
+const myListsDeleteAllToDos = (myListName, deleteAllTodos = true) => {
+  if (deleteAllTodos) {
     // Delete every todo in the list
     for (let key in mainList[myListName].todos) {
       toDoDelete(key, true);
     }
+  }
+};
+
+// If deleteMyList is true, delete the list and remove it from mainList
+// Also call myListsDeleteAllToDos for the list
+const myListsDelete = (myListName, deleteMyList = true) => {
+  if (deleteMyList) {
+    myListsDeleteAllToDos(myListName, true);
+
     // Delete the list from mainList
     delete mainList[myListName];
     deleteListFromActiveListContainer(myListName);
@@ -67,6 +75,7 @@ const myListsAddToDo = (myListName, toDoName) => {
 
 export {
   myListsDeleteToDo,
+  myListsDeleteAllToDos,
   myListsDelete,
   myListsAddToDo,
   myListsSendToFactory,
