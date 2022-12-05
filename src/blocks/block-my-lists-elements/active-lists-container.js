@@ -1,5 +1,6 @@
 import { elementActiveLists } from "../block-my-lists";
 import { mainList } from "../../functions/mylists/my-lists-factory-function";
+import { createListToolBar } from "../block-list-toolbar";
 
 // Create a new <li> with textContent and id of created list
 // Append it to my lists container
@@ -34,6 +35,10 @@ const addListInActiveListContainer = (newListTitle) => {
     let newList = document.createElement("li");
     newList.setAttribute("id", listId);
     newList.textContent = listTitle;
+    newList.addEventListener("click", () => {
+      changeListTitleColor(listId);
+      createListToolBar(listTitle, true);
+    });
 
     elementActiveLists.appendChild(newList);
   }
@@ -87,6 +92,20 @@ const createTodosCountElement = (todosCount) => {
   }
 
   return todosCountElement;
+};
+
+const changeListTitleColor = (listId) => {
+  const selectedList = document.getElementById(listId);
+
+  // Remove the ".selected-list" class from previous selected list
+  const listItems = document.querySelectorAll("#my-lists-container-lists li");
+  listItems.forEach((listItem) => {
+    listItem.classList.remove("selected-list");
+  });
+
+  if (selectedList) {
+    selectedList.classList.add("selected-list");
+  }
 };
 
 export {

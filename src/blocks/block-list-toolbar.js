@@ -4,6 +4,8 @@ import {
 } from "../functions/mylists/my-lists-changers";
 
 const createListToolBar = (listTitle) => {
+  removePreviousActiveToolbar();
+
   const listToolBarElement = document.createElement("div");
   listToolBarElement.classList.add("list-tool-bar");
 
@@ -40,6 +42,7 @@ const createListToolBar = (listTitle) => {
       )
     ) {
       myListsDelete(listTitle);
+      listToolBarElement.remove();
     }
   });
 
@@ -48,6 +51,14 @@ const createListToolBar = (listTitle) => {
   listToolBarElement.appendChild(listToolBarDeleteListButton);
 
   document.querySelector(".list-extended-view").appendChild(listToolBarElement);
+};
+
+// If a toolbar already exists, remove it
+const removePreviousActiveToolbar = () => {
+  const previousList = document.querySelector(".list-tool-bar");
+  if (previousList) {
+    previousList.remove();
+  }
 };
 
 export { createListToolBar };

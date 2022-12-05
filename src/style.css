@@ -111,3 +111,7 @@ svg {
   resize: none;
   outline: none;
 }
+
+.selected-list {
+  color: var(--clr-accent-700);
+}
