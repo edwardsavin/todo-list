@@ -1,3 +1,4 @@
+import { updateListTodoCount } from "../../blocks/block-my-lists-elements/active-lists-container";
 import { toDoFactory, mainToDo } from "./todo-factory-function";
 
 // Send todo to factory and append to mainToDo;
@@ -96,6 +97,7 @@ const toDoChangeSubTaskContent = (
 const toDoDelete = (toDoName, deleteToDo = true) => {
   if (deleteToDo) {
     delete mainToDo[toDoName];
+    updateListTodoCount();
   }
 };
 
