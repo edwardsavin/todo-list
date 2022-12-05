@@ -68,7 +68,10 @@ const updateListTodoCount = () => {
 
     // Check if the element with the class "todos-number" already exists in listTitleElement
     // If the element already exists, don't create it again
-    if (!listTitleElement.querySelector(".todos-number")) {
+    const todosNumberElement = listTitleElement.querySelector(".todos-number");
+    if (todosNumberElement) {
+      todosNumberElement.textContent = todosCount;
+    } else {
       listTitleElement.appendChild(todosCountContainerElement);
     }
   });
