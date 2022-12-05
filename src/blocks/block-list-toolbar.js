@@ -16,7 +16,15 @@ const createListToolBar = (listTitle) => {
   listToolBarDeleteTodosButton.id = "list-tool-bar-clear-todos";
   listToolBarDeleteTodosButton.textContent = "X";
   listToolBarDeleteTodosButton.addEventListener("click", () => {
-    myListsDeleteAllToDos(listTitle);
+    if (
+      confirm(
+        "This action is irreversible, are you sure you want to clear all the todos in " +
+          listTitle +
+          "?"
+      )
+    ) {
+      myListsDeleteAllToDos(listTitle);
+    }
   });
 
   const listToolBarDeleteListButton = document.createElement("button");
@@ -24,7 +32,15 @@ const createListToolBar = (listTitle) => {
   listToolBarDeleteListButton.id = "list-tool-bar-delete-list";
   listToolBarDeleteListButton.textContent = "#";
   listToolBarDeleteListButton.addEventListener("click", () => {
-    myListsDelete(listTitle);
+    if (
+      confirm(
+        "This action is irreversible, are you sure you want to delete " +
+          listTitle +
+          "?"
+      )
+    ) {
+      myListsDelete(listTitle);
+    }
   });
 
   listToolBarElement.appendChild(listToolBarTitleElement);
