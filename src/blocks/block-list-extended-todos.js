@@ -50,4 +50,4 @@ const removePreviousActiveExtendedTodos = () => {
   }
 };
 
-export { createListExtendedTodos };
+export { createListExtendedTodos, removePreviousActiveExtendedTodos };
