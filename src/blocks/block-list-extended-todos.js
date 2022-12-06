@@ -1,4 +1,5 @@
 import { mainList } from "../functions/mylists/my-lists-factory-function";
+import { mainToDo } from "../functions/todo/todo-factory-function";
 
 const listExtendedViewElement = document.querySelector(".list-extended-view");
 
@@ -28,6 +29,7 @@ const createListExtendedTodos = (listTitle) => {
 
     const newTodoDate = document.createElement("div");
     newTodoDate.classList.add("extended-todo-main-date");
+    newTodoDate.textContent = mainToDo[todo].dueDate;
 
     newTodoMainContent.appendChild(newTodoTitle);
     newTodoMainContent.appendChild(newTodoDate);

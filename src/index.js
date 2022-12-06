@@ -47,11 +47,13 @@ toDoSendToFactory("test5");
 toDoSendToFactory("test6");
 
 myListsAddToDo(mainList["Personal"], mainToDo["test"]);
-
+toDoChangeDueDate(mainToDo["test"], "23.09.4400");
 myListsAddToDo(mainList["Personal"], mainToDo["test2"]);
 myListsAddToDo(mainList["Grocery List"], mainToDo["test5"]);
 myListsAddToDo(mainList["Work"], mainToDo["test3"]);
 myListsAddToDo(mainList["Grocery List"], mainToDo["test4"]);
 myListsAddToDo(mainList["Grocery List"], mainToDo["test6"]);
+toDoChangeDueDate(mainToDo["test4"], "13.08.4000");
+toDoChangeDueDate(mainToDo["test6"], "13.08.4000");
 
 updateListTodoCount();
