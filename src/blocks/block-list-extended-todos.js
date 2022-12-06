@@ -3,7 +3,7 @@ import { mainList } from "../functions/mylists/my-lists-factory-function";
 const listExtendedViewElement = document.querySelector(".list-extended-view");
 
 const createListExtendedTodos = (listTitle) => {
-  removePreviousActiveExtendedTodos();
+  removeExtendedTodosView();
 
   const listExtendedTodosElement = document.createElement("section");
   listExtendedTodosElement.classList.add("list-extended-view-todos");
@@ -41,7 +41,7 @@ const createListExtendedTodos = (listTitle) => {
 };
 
 // If an extended todos view already exists, remove it
-const removePreviousActiveExtendedTodos = () => {
+const removeExtendedTodosView = () => {
   const previousExtendedTodos = document.querySelector(
     ".list-extended-view-todos"
   );
@@ -50,4 +50,4 @@ const removePreviousActiveExtendedTodos = () => {
   }
 };
 
-export { createListExtendedTodos, removePreviousActiveExtendedTodos };
+export { createListExtendedTodos, removeExtendedTodosView };

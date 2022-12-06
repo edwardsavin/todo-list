@@ -2,7 +2,7 @@ import {
   myListsDelete,
   myListsDeleteAllToDos,
 } from "../functions/mylists/my-lists-changers";
-import { removePreviousActiveExtendedTodos } from "./block-list-extended-todos";
+import { removeExtendedTodosView } from "./block-list-extended-todos";
 
 const createListToolBar = (listTitle) => {
   removePreviousActiveToolbar();
@@ -44,7 +44,7 @@ const createListToolBar = (listTitle) => {
     ) {
       myListsDelete(listTitle);
       listToolBarElement.remove();
-      removePreviousActiveExtendedTodos(listTitle);
+      removeExtendedTodosView(listTitle);
     }
   });
 
