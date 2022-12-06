@@ -47,12 +47,11 @@ toDoSendToFactory("test5");
 toDoSendToFactory("test6");
 
 myListsAddToDo(mainList["Personal"], mainToDo["test"]);
+
 myListsAddToDo(mainList["Personal"], mainToDo["test2"]);
-myListsAddToDo(mainList["Grocery-List"], mainToDo["test5"]);
+myListsAddToDo(mainList["Grocery List"], mainToDo["test5"]);
 myListsAddToDo(mainList["Work"], mainToDo["test3"]);
-myListsAddToDo(mainList["Grocery-List"], mainToDo["test4"]);
-myListsAddToDo(mainList["Grocery-List"], mainToDo["test6"]);
+myListsAddToDo(mainList["Grocery List"], mainToDo["test4"]);
+myListsAddToDo(mainList["Grocery List"], mainToDo["test6"]);
 
 updateListTodoCount();
-
-myListsDelete("Grocery-List");

@@ -11,9 +11,7 @@ const myListsSendToFactory = (newListTitle) => {
 
   if (newListTitle !== null && listAlreadyExists === false) {
     // Format one or more spaces into a dash "-"
-    let formattedNewListTitle = newListTitle
-      .replace(/  +/g, " ")
-      .replaceAll(" ", "-");
+    let formattedNewListTitle = newListTitle.replace(/  +/g, " ");
 
     mainList[formattedNewListTitle] = myListsFactory(formattedNewListTitle);
 
