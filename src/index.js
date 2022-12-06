@@ -34,6 +34,7 @@ import {
   updateListTodoCount,
 } from "./blocks/block-my-lists-elements/active-lists-container";
 import { createListToolBar } from "./blocks/block-list-toolbar";
+import { createListExtendedTodos } from "./blocks/block-list-extended-todos";
 
 myListsSendToFactory("Personal");
 myListsSendToFactory("Work");
@@ -55,3 +56,5 @@ myListsAddToDo(mainList["Grocery-List"], mainToDo["test6"]);
 updateListTodoCount();
 
 myListsDelete("Grocery-List");
+
+createListExtendedTodos("Personal");
