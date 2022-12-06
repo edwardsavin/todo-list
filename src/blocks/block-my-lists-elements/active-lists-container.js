@@ -16,7 +16,7 @@ const addListInActiveListContainer = (newListTitle) => {
 
   // Check if list already present in DOM
   Object.keys(mainList).forEach((list) => {
-    listId = `list-${list}`.toLowerCase();
+    listId = `list-${list}`.toLowerCase().replaceAll(" ", "-");
     // Capitalize only the first letter
     listTitle =
       newListTitle.toLowerCase().charAt(0).toUpperCase() +
@@ -64,8 +64,9 @@ const updateListTodoCount = () => {
     const todosCount = Object.keys(mainList[list].todos).length;
 
     const todosCountContainerElement = createTodosCountElement(todosCount);
+    const formattedListTitle = list.toLowerCase().replaceAll(" ", "-")
     const listTitleElement = document.querySelector(
-      `#list-${list.toLowerCase()}`
+      `#list-${formattedListTitle}`
     );
 
     // Check if listTitleElement exists
