@@ -1,6 +1,7 @@
 import { elementActiveLists } from "../block-my-lists";
 import { mainList } from "../../functions/mylists/my-lists-factory-function";
 import { createListToolBar } from "../block-list-toolbar";
+import { createListExtendedTodos } from "../block-list-extended-todos";
 
 // Create a new <li> with textContent and id of created list
 // Append it to my lists container
@@ -37,7 +38,8 @@ const addListInActiveListContainer = (newListTitle) => {
     newList.textContent = listTitle;
     newList.addEventListener("click", () => {
       changeListTitleColor(listId);
-      createListToolBar(listTitle, true);
+      createListToolBar(listTitle);
+      createListExtendedTodos(listTitle);
     });
 
     elementActiveLists.appendChild(newList);
