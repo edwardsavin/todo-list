@@ -42,12 +42,42 @@ const createListExtendedTodos = (listTitle) => {
 
 // If an extended todos view already exists, remove it
 const removeExtendedTodosView = () => {
-  const previousExtendedTodos = document.querySelector(
+  const previousExtendedTodosView = document.querySelector(
     ".list-extended-view-todos"
   );
-  if (previousExtendedTodos) {
-    previousExtendedTodos.remove();
+  if (previousExtendedTodosView) {
+    previousExtendedTodosView.remove();
   }
 };
 
-export { createListExtendedTodos, removeExtendedTodosView };
+// If an extended todos main content already exists, remove it
+const removeExtendedTodosContent = (todoTitle, all = true) => {
+  // If all option selected, remove all todos content
+  if (all === true) {
+    const allPreviousExtendedTodos = document.querySelectorAll(
+      ".extended-todo-wrapper"
+    );
+
+    allPreviousExtendedTodos.forEach((todo) => {
+      if (todo) {
+        todo.remove();
+      }
+    });
+
+    // If all option not selected, remove only the selected todo via todoTitle
+  } else {
+    const todoId = document.querySelector(`#extended-todo-button-${todoTitle}`);
+
+    const singlePreviousExtendedTodo = todoId.parentElement;
+
+    if (singlePreviousExtendedTodo) {
+      singlePreviousExtendedTodo.remove();
+    }
+  }
+};
+
+export {
+  createListExtendedTodos,
+  removeExtendedTodosView,
+  removeExtendedTodosContent,
+};
