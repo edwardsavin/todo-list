@@ -3,7 +3,7 @@ import { mainList } from "../functions/mylists/my-lists-factory-function";
 const listExtendedViewElement = document.querySelector(".list-extended-view");
 
 const createListExtendedTodos = (listTitle) => {
-  // removePreviousActiveExtendedTodos();
+  removePreviousActiveExtendedTodos();
 
   const listExtendedTodosElement = document.createElement("section");
   listExtendedTodosElement.classList.add("list-extended-view-todos");
@@ -38,6 +38,16 @@ const createListExtendedTodos = (listTitle) => {
   });
 
   listExtendedViewElement.appendChild(listExtendedTodosElement);
+};
+
+// If an extended todos view already exists, remove it
+const removePreviousActiveExtendedTodos = () => {
+  const previousExtendedTodos = document.querySelector(
+    ".list-extended-view-todos"
+  );
+  if (previousExtendedTodos) {
+    previousExtendedTodos.remove();
+  }
 };
 
 export { createListExtendedTodos };

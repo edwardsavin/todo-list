@@ -56,5 +56,3 @@ myListsAddToDo(mainList["Grocery-List"], mainToDo["test6"]);
 updateListTodoCount();
 
 myListsDelete("Grocery-List");
-
-createListExtendedTodos("Personal");
