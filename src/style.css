@@ -115,3 +115,8 @@ svg {
 .selected-list {
   color: var(--clr-accent-700);
 }
+
+.extended-todo-wrapper:hover {
+  cursor: pointer;
+  background-color: rgba(128, 128, 128, 0.192);
+}

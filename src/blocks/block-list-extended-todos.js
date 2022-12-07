@@ -14,6 +14,7 @@ const createListExtendedTodos = (listTitle) => {
   Object.keys(mainList[listTitle].todos).forEach((todo) => {
     const newTodoWrapper = document.createElement("div");
     newTodoWrapper.classList.add("extended-todo-wrapper");
+    newTodoWrapper.id = `extended-todo-main-content-${todo}`
 
     const newTodoButton = document.createElement("button");
     newTodoButton.classList.add("extended-todo-button");
