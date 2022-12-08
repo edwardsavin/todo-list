@@ -5,7 +5,7 @@ import { toDoFactory, mainToDo } from "./todo-factory-function";
 const toDoSendToFactory = (
   newToDoTitle,
   description,
-  checkBox,
+  checkBox = false,
   dueDate,
   priority,
   notes,

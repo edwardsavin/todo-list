@@ -120,3 +120,8 @@ svg {
   cursor: pointer;
   background-color: rgba(128, 128, 128, 0.192);
 }
+
+.todo-wrapper-checked {
+  color: gray;
+  text-decoration: line-through;
+}

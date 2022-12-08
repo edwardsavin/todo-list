@@ -1,5 +1,9 @@
 import { mainList } from "../functions/mylists/my-lists-factory-function";
 import { mainToDo } from "../functions/todo/todo-factory-function";
+import {
+  activateCheckBox,
+  changeCheckBoxStateStyle,
+} from "./block-list-extended-elements/extended-todo-checkbox";
 
 const listExtendedViewElement = document.querySelector(".list-extended-view");
 
@@ -14,12 +18,16 @@ const createListExtendedTodos = (listTitle) => {
   Object.keys(mainList[listTitle].todos).forEach((todo) => {
     const newTodoWrapper = document.createElement("div");
     newTodoWrapper.classList.add("extended-todo-wrapper");
-    newTodoWrapper.id = `extended-todo-main-content-${todo}`
+    newTodoWrapper.id = `extended-todo-main-content-${todo}`;
+    changeCheckBoxStateStyle(todo, listTitle, newTodoWrapper);
 
-    const newTodoButton = document.createElement("button");
-    newTodoButton.classList.add("extended-todo-button");
-    newTodoButton.id = `extended-todo-button-${todo}`;
-    newTodoButton.textContent = "O";
+    const newTodoCheckBox = document.createElement("button");
+    newTodoCheckBox.classList.add("extended-todo-checkbox");
+    newTodoCheckBox.id = `extended-todo-checkbox-${todo}`;
+    newTodoCheckBox.textContent = "O";
+    newTodoCheckBox.addEventListener("click", () => {
+      activateCheckBox(todo, listTitle, false);
+    });
 
     const newTodoMainContent = document.createElement("div");
     newTodoMainContent.classList.add("extended-todo-main-content");
@@ -35,7 +43,7 @@ const createListExtendedTodos = (listTitle) => {
     newTodoMainContent.appendChild(newTodoTitle);
     newTodoMainContent.appendChild(newTodoDate);
 
-    newTodoWrapper.appendChild(newTodoButton);
+    newTodoWrapper.appendChild(newTodoCheckBox);
     newTodoWrapper.appendChild(newTodoMainContent);
     listExtendedTodosElement.appendChild(newTodoWrapper);
   });
