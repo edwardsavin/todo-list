@@ -57,6 +57,11 @@ const addElementCreateListModal = () => {
       elementMyListsContainer.removeChild(elementCreateListModal);
     };
 
+    elementCreateListModal.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        createNewList();
+      }
+    });
     elementModalCreateButton.addEventListener("click", createNewList);
     elementModalCancelButton.addEventListener("click", cancelNewList);
   }
