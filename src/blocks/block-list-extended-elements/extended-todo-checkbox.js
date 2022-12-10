@@ -15,8 +15,8 @@ const activateCheckBox = (todoName, listName, checkboxPressed = false) => {
   }
 
   if (checkboxState === true) {
-    toDoChangeCheckBox(mainToDo[todoName]);
     changeCheckBoxStateStyle(todoName, listName, mainContent);
+    toDoChangeCheckBox(mainToDo[todoName]);
   }
 };
 
@@ -38,7 +38,7 @@ const changeCheckBoxStateStyle = (todoName, listName, mainContent) => {
   }
 };
 
-// TODO: refactor and fix bug: sometimes the todo is not moved to the correct location
+// TODO: Refactor this function
 // Move the to-do element to its appropriate location in the DOM
 const moveToDoElement = (todoName, listName, mainContent) => {
   const toDoIndex = Object.keys(mainList[listName].todos).indexOf(todoName);
