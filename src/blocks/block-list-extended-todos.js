@@ -26,7 +26,6 @@ const createListExtendedTodos = (listTitle) => {
     const newTodoWrapper = document.createElement("div");
     newTodoWrapper.classList.add("extended-todo-wrapper");
     newTodoWrapper.id = `extended-todo-main-content-${todo}`;
-    changeCheckBoxStateStyle(todo, listTitle, newTodoWrapper);
 
     const newTodoCheckBox = document.createElement("button");
     newTodoCheckBox.classList.add("extended-todo-checkbox");
@@ -53,6 +52,7 @@ const createListExtendedTodos = (listTitle) => {
     newTodoWrapper.appendChild(newTodoCheckBox);
     newTodoWrapper.appendChild(newTodoMainContent);
     listExtendedTodosElement.appendChild(newTodoWrapper);
+    changeCheckBoxStateStyle(todo, listTitle, newTodoWrapper);
   });
 
   listExtendedViewElement.appendChild(listExtendedTodosElement);
