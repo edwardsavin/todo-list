@@ -1,9 +1,10 @@
 import { myListsFactory, mainList } from "./my-lists-factory-function";
-import { toDoDelete } from "../todo/todo-changers";
+import { toDoDelete, toDoSendToFactory } from "../todo/todo-changers";
 import {
   addListInActiveListContainer,
   deleteListFromActiveListContainer,
 } from "../../blocks/block-my-lists-elements/active-lists-container";
+import { mainToDo } from "../todo/todo-factory-function";
 
 // If list doesn't already exist, send it to factory and append to mainList
 const myListsSendToFactory = (newListTitle) => {
@@ -32,6 +33,34 @@ const myListsCheckIfListExists = (myListName) => {
   });
 
   return listDetected;
+};
+
+// Check if a to-do with the given name already exists in the list.
+// If duplicate detected, return true
+const myListsCheckIfTodoDuplicate = (myListName, toDoName) => {
+  let duplicateDetected = false;
+
+  Object.keys(mainList[myListName].todos).forEach((todo) => {
+    if (todo.toString().toLowerCase() === toDoName.toString().toLowerCase()) {
+      duplicateDetected = true;
+    }
+  });
+
+  return duplicateDetected;
+};
+
+const myListsIncrementTodoCopyName = (myListName, toDoName) => {
+  let newTodo = toDoName;
+  let num = 1;
+
+  // If the todo already exists in the list, add a number to the end of the todo until unique name is found
+  while (myListsCheckIfTodoDuplicate(myListName, newTodo)) {
+    newTodo = `${toDoName} (${num})`;
+    num++;
+  }
+
+  toDoSendToFactory(newTodo);
+  myListsAddToDo(mainList[myListName], mainToDo[newTodo]);
 };
 
 // Delete the todo from myList
@@ -78,4 +107,6 @@ export {
   myListsAddToDo,
   myListsSendToFactory,
   myListsCheckIfListExists,
+  myListsCheckIfTodoDuplicate,
+  myListsIncrementTodoCopyName,
 };

@@ -1,9 +1,16 @@
+import {
+  myListsAddToDo,
+  myListsCheckIfTodoDuplicate,
+  myListsIncrementTodoCopyName,
+} from "../functions/mylists/my-lists-changers";
 import { mainList } from "../functions/mylists/my-lists-factory-function";
+import { toDoSendToFactory } from "../functions/todo/todo-changers";
 import { mainToDo } from "../functions/todo/todo-factory-function";
 import {
   activateCheckBox,
   changeCheckBoxStateStyle,
 } from "./block-list-extended-elements/extended-todo-checkbox";
+import { updateListTodoCount } from "./block-my-lists-elements/active-lists-container";
 
 const listExtendedViewElement = document.querySelector(".list-extended-view");
 
@@ -87,8 +94,77 @@ const removeExtendedTodosContent = (todoTitle, all = true) => {
   }
 };
 
+// Create a quick-add-todo element on the page that allows the user to quickly add a todo to the specified list.
+const createQuickAddTodoElement = (listTitle) => {
+  removeQuickAddTodoElement();
+
+  const quickAddTodoWrapper = document.createElement("div");
+  quickAddTodoWrapper.classList.add("quick-add-todo-wrapper");
+
+  const quickAddTodoInputWrapper = document.createElement("div");
+  quickAddTodoInputWrapper.classList.add("quick-add-todo-input-wrapper");
+
+  const quickAddTodoInput = document.createElement("input");
+  quickAddTodoInput.classList.add("quick-add-todo-input");
+  quickAddTodoInput.placeholder = "Click to quickly add a todo";
+
+  const quickAddTodoButton = document.createElement("button");
+  quickAddTodoButton.id = "quick-add-todo-button";
+  quickAddTodoButton.textContent = "↑";
+
+  quickAddTodoInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      createTodoFromQuickAdd(quickAddTodoInput, quickAddTodoWrapper, listTitle);
+    }
+  });
+
+  quickAddTodoButton.addEventListener("click", () => {
+    createTodoFromQuickAdd(quickAddTodoInput, quickAddTodoWrapper, listTitle);
+  });
+
+  quickAddTodoInputWrapper.appendChild(quickAddTodoInput);
+  quickAddTodoWrapper.appendChild(quickAddTodoInputWrapper);
+  quickAddTodoWrapper.appendChild(quickAddTodoButton);
+
+  listExtendedViewElement.appendChild(quickAddTodoWrapper);
+};
+
+// Create a todo based on the input provided by the quick add todo element.
+// The new todo is added to the specified list, and any necessary updates to the page are made.
+const createTodoFromQuickAdd = (
+  quickAddTodoInput,
+  quickAddTodoWrapper,
+  listTitle
+) => {
+  let todoTitle = quickAddTodoInput.value.trim().replace(/  +/g, " ");
+
+  if (todoTitle.length !== 0) {
+    if (myListsCheckIfTodoDuplicate(listTitle, todoTitle) === false) {
+      toDoSendToFactory(todoTitle);
+      myListsAddToDo(mainList[listTitle], mainToDo[todoTitle]);
+    } else {
+      myListsIncrementTodoCopyName(listTitle, todoTitle);
+    }
+
+    updateListTodoCount();
+    createListExtendedTodos(listTitle);
+    quickAddTodoInput.value = null;
+    listExtendedViewElement.appendChild(quickAddTodoWrapper);
+  }
+};
+
+// If a quick add todo element already exists, remove it
+const removeQuickAddTodoElement = () => {
+  const quickAddTodoElement = document.querySelector(".quick-add-todo-wrapper");
+
+  if (quickAddTodoElement) {
+    quickAddTodoElement.remove();
+  }
+};
+
 export {
   createListExtendedTodos,
   removeExtendedTodosView,
   removeExtendedTodosContent,
+  createQuickAddTodoElement,
 };
