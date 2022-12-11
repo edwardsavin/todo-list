@@ -29,7 +29,12 @@ const createListExtendedTodos = (listTitle) => {
     newTodoWrapper.classList.add("extended-todo-wrapper");
     newTodoWrapper.id = `extended-todo-main-content-${todo}`;
 
-    newTodoWrapper.addEventListener("click", () => {
+    newTodoWrapper.addEventListener("click", (event) => {
+      // If checkbox is clicked, ignore click event
+      if (event.target === newTodoCheckBox) {
+        return;
+      }
+
       const clickedClass = document.querySelectorAll(".todo-wrapped-clicked");
       removeClickedClass(clickedClass);
       handleTodoClick(newTodoWrapper);
