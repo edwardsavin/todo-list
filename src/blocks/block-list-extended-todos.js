@@ -11,6 +11,7 @@ import {
   changeCheckBoxStateStyle,
 } from "./block-list-extended-elements/extended-todo-checkbox";
 import { updateListTodoCount } from "./block-my-lists-elements/active-lists-container";
+import { createExtendedMainContent } from "./block-list-extended-base";
 
 const listExtendedViewElement = document.querySelector(".list-extended-view");
 const extendedViewScrollSection = document.createElement("section");
@@ -37,7 +38,7 @@ const createListExtendedTodos = (listTitle) => {
 
       const clickedClass = document.querySelectorAll(".todo-wrapped-clicked");
       removeClickedClass(clickedClass);
-      handleTodoClick(newTodoWrapper);
+      handleTodoClick(newTodoWrapper, todo);
     });
 
     const newTodoCheckBox = document.createElement("button");
@@ -151,7 +152,10 @@ const createTodoFromQuickAdd = (
   quickAddTodoWrapper,
   listTitle
 ) => {
-  let todoTitle = quickAddTodoInput.value.trim().replace(/  +/g, " ").replaceAll(" ", "-");
+  let todoTitle = quickAddTodoInput.value
+    .trim()
+    .replace(/  +/g, " ")
+    .replaceAll(" ", "-");
 
   if (todoTitle.length !== 0) {
     if (myListsCheckIfTodoDuplicate(listTitle, todoTitle) === false) {
@@ -179,8 +183,9 @@ const removeQuickAddTodoElement = () => {
   }
 };
 
-function handleTodoClick(element) {
+function handleTodoClick(element, todoName) {
   element.classList.add("todo-wrapped-clicked");
+  createExtendedMainContent(todoName);
 }
 
 function removeClickedClass(todoElements) {

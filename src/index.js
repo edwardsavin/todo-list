@@ -34,7 +34,11 @@ import {
   updateListTodoCount,
 } from "./blocks/block-my-lists-elements/active-lists-container";
 import { createListToolBar } from "./blocks/block-list-toolbar";
-import { createListExtendedTodos, createQuickAddTodoElement } from "./blocks/block-list-extended-todos";
+import {
+  createListExtendedTodos,
+  createQuickAddTodoElement,
+} from "./blocks/block-list-extended-todos";
+import { createExtendedMainContent } from "./blocks/block-list-extended-base";
 
 myListsSendToFactory("Personal");
 myListsSendToFactory("Work");
