@@ -55,12 +55,13 @@ const myListsIncrementTodoCopyName = (myListName, toDoName) => {
 
   // If the todo already exists in the list, add a number to the end of the todo until unique name is found
   while (myListsCheckIfTodoDuplicate(myListName, newTodo)) {
-    newTodo = `${toDoName} (${num})`;
+    newTodo = `${toDoName}${num}`;
     num++;
   }
 
   toDoSendToFactory(newTodo);
   myListsAddToDo(mainList[myListName], mainToDo[newTodo]);
+  console.log(mainList[myListName]);
 };
 
 // Delete the todo from myList
