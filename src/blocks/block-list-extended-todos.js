@@ -27,6 +27,12 @@ const createListExtendedTodos = (listTitle) => {
     newTodoWrapper.classList.add("extended-todo-wrapper");
     newTodoWrapper.id = `extended-todo-main-content-${todo}`;
 
+    newTodoWrapper.addEventListener("click", () => {
+      const clickedClass = document.querySelectorAll(".todo-wrapped-clicked");
+      removeClickedClass(clickedClass);
+      handleTodoClick(newTodoWrapper);
+    });
+
     const newTodoCheckBox = document.createElement("button");
     newTodoCheckBox.classList.add("extended-todo-checkbox");
     newTodoCheckBox.id = `extended-todo-checkbox-${todo}`;
@@ -161,6 +167,16 @@ const removeQuickAddTodoElement = () => {
     quickAddTodoElement.remove();
   }
 };
+
+function handleTodoClick(element) {
+  element.classList.add("todo-wrapped-clicked");
+}
+
+function removeClickedClass(todoElements) {
+  for (let i = 0; i < todoElements.length; i++) {
+    todoElements[i].classList.remove("todo-wrapped-clicked");
+  }
+}
 
 export {
   createListExtendedTodos,

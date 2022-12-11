@@ -121,6 +121,10 @@ svg {
   background-color: rgba(128, 128, 128, 0.192);
 }
 
+.todo-wrapped-clicked {
+  border: 2px dashed var(--clr-accent-400);
+}
+
 .todo-wrapper-checked {
   color: gray;
   text-decoration: line-through;
