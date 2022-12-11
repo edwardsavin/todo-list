@@ -151,7 +151,7 @@ const createTodoFromQuickAdd = (
   quickAddTodoWrapper,
   listTitle
 ) => {
-  let todoTitle = quickAddTodoInput.value.trim().replace(/  +/g, " ");
+  let todoTitle = quickAddTodoInput.value.trim().replace(/  +/g, " ").replaceAll(" ", "-");
 
   if (todoTitle.length !== 0) {
     if (myListsCheckIfTodoDuplicate(listTitle, todoTitle) === false) {
