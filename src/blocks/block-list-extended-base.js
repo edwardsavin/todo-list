@@ -69,4 +69,15 @@ const removeExtendedMainContent = () => {
   }
 };
 
-export { createExtendedMainContent };
+// Remove the extended view main section from the DOM
+const removeExtendedMainSection = () => {
+  const extendedViewMainSection = document.querySelector(
+    ".extended-view-main-section"
+  );
+
+  if (extendedViewMainSection) {
+    extendedViewMainSection.remove();
+  }
+};
+
+export { createExtendedMainContent, removeExtendedMainSection };

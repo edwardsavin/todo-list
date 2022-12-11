@@ -1,7 +1,11 @@
 import { elementActiveLists } from "../block-my-lists";
 import { mainList } from "../../functions/mylists/my-lists-factory-function";
 import { createListToolBar } from "../block-list-toolbar";
-import { createListExtendedTodos, createQuickAddTodoElement } from "../block-list-extended-todos";
+import {
+  createListExtendedTodos,
+  createQuickAddTodoElement,
+} from "../block-list-extended-todos";
+import { removeExtendedMainSection } from "../block-list-extended-base";
 
 // Create a new <li> with textContent and id of created list
 // Append it to my lists container
@@ -41,6 +45,7 @@ const addListInActiveListContainer = (newListTitle) => {
       createListToolBar(listTitle);
       createListExtendedTodos(listTitle);
       createQuickAddTodoElement(listTitle);
+      removeExtendedMainSection();
     });
 
     elementActiveLists.appendChild(newList);
@@ -65,7 +70,7 @@ const updateListTodoCount = () => {
     const todosCount = Object.keys(mainList[list].todos).length;
 
     const todosCountContainerElement = createTodosCountElement(todosCount);
-    const formattedListTitle = list.toLowerCase().replaceAll(" ", "-")
+    const formattedListTitle = list.toLowerCase().replaceAll(" ", "-");
     const listTitleElement = document.querySelector(
       `#list-${formattedListTitle}`
     );
