@@ -13,11 +13,13 @@ import {
 import { updateListTodoCount } from "./block-my-lists-elements/active-lists-container";
 
 const listExtendedViewElement = document.querySelector(".list-extended-view");
+const extendedViewScrollSection = document.createElement("section");
+extendedViewScrollSection.classList.add("extended-view-scroll-section");
 
 const createListExtendedTodos = (listTitle) => {
   removeExtendedTodosView();
 
-  const listExtendedTodosElement = document.createElement("section");
+  const listExtendedTodosElement = document.createElement("div");
   listExtendedTodosElement.classList.add("list-extended-view-todos");
   listExtendedTodosElement.textContent = `${listTitle} EXTENDED TEST`;
 
@@ -61,7 +63,8 @@ const createListExtendedTodos = (listTitle) => {
     changeCheckBoxStateStyle(todo, listTitle, newTodoWrapper);
   });
 
-  listExtendedViewElement.appendChild(listExtendedTodosElement);
+  extendedViewScrollSection.appendChild(listExtendedTodosElement);
+  listExtendedViewElement.appendChild(extendedViewScrollSection);
 };
 
 // If an extended todos view already exists, remove it
@@ -132,7 +135,8 @@ const createQuickAddTodoElement = (listTitle) => {
   quickAddTodoWrapper.appendChild(quickAddTodoInputWrapper);
   quickAddTodoWrapper.appendChild(quickAddTodoButton);
 
-  listExtendedViewElement.appendChild(quickAddTodoWrapper);
+  extendedViewScrollSection.appendChild(quickAddTodoWrapper);
+  listExtendedViewElement.appendChild(extendedViewScrollSection);
 };
 
 // Create a todo based on the input provided by the quick add todo element.
@@ -155,7 +159,9 @@ const createTodoFromQuickAdd = (
     updateListTodoCount();
     createListExtendedTodos(listTitle);
     quickAddTodoInput.value = null;
-    listExtendedViewElement.appendChild(quickAddTodoWrapper);
+
+    extendedViewScrollSection.appendChild(quickAddTodoWrapper);
+    listExtendedViewElement.appendChild(extendedViewScrollSection);
   }
 };
 
