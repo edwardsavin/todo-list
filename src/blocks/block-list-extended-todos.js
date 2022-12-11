@@ -38,7 +38,7 @@ const createListExtendedTodos = (listTitle) => {
 
       const clickedClass = document.querySelectorAll(".todo-wrapped-clicked");
       removeClickedClass(clickedClass);
-      handleTodoClick(newTodoWrapper, todo);
+      handleTodoClick(newTodoWrapper, listTitle, todo);
     });
 
     const newTodoCheckBox = document.createElement("button");
@@ -183,9 +183,9 @@ const removeQuickAddTodoElement = () => {
   }
 };
 
-function handleTodoClick(element, todoName) {
+function handleTodoClick(element, listTitle, todoName) {
   element.classList.add("todo-wrapped-clicked");
-  createExtendedMainContent(todoName);
+  createExtendedMainContent(listTitle, todoName);
 }
 
 function removeClickedClass(todoElements) {
