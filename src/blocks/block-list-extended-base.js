@@ -50,4 +50,4 @@ const removeExtendedMainSection = () => {
   }
 };
 
-export { createExtendedMainContent, removeExtendedMainSection };
+export { createExtendedMainContent, removeExtendedMainContent, removeExtendedMainSection };

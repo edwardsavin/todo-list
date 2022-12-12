@@ -1,3 +1,4 @@
+import { removeExtendedMainContent } from "../block-list-extended-base";
 import { activateCheckBox } from "./extended-todo-checkbox";
 
 // Create the main content header
