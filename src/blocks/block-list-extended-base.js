@@ -3,6 +3,7 @@ import {
   createMainContentDetails,
   updateTodoPriorityDom,
 } from "./block-list-extended-elements/extended-base-details";
+import { createMainContentNotes } from "./block-list-extended-elements/extended-base-notes";
 
 const listExtendedViewElement = document.querySelector(".list-extended-view");
 
@@ -18,9 +19,11 @@ const createExtendedMainContent = (listTitle, todoName) => {
 
   const mainContentHeader = createMainContentHeader(listTitle, todoName);
   const mainContentDetails = createMainContentDetails(listTitle, todoName);
+  const mainContentNotes = createMainContentNotes(listTitle, todoName);
 
   extendedViewMainContent.appendChild(mainContentHeader);
   extendedViewMainContent.appendChild(mainContentDetails);
+  extendedViewMainContent.appendChild(mainContentNotes);
 
   extendedViewMainSection.appendChild(extendedViewMainContent);
   listExtendedViewElement.appendChild(extendedViewMainSection);
@@ -50,4 +53,8 @@ const removeExtendedMainSection = () => {
   }
 };
 
-export { createExtendedMainContent, removeExtendedMainContent, removeExtendedMainSection };
+export {
+  createExtendedMainContent,
+  removeExtendedMainContent,
+  removeExtendedMainSection,
+};
