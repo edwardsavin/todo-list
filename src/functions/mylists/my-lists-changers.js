@@ -1,7 +1,6 @@
 import { myListsFactory, mainList } from "./my-lists-factory-function";
 import { toDoDelete, toDoSendToFactory } from "../todo/todo-changers";
 import {
-  addListInActiveListContainer,
   deleteListFromActiveListContainer,
   updateListTodoCount,
 } from "../../blocks/block-my-lists-elements/active-lists-container";
@@ -16,8 +15,6 @@ const myListsSendToFactory = (newListTitle) => {
     let formattedNewListTitle = newListTitle.replace(/  +/g, " ");
 
     mainList[formattedNewListTitle] = myListsFactory(formattedNewListTitle);
-
-    addListInActiveListContainer(newListTitle);
   }
 };
 
@@ -62,7 +59,6 @@ const myListsIncrementTodoCopyName = (myListName, toDoName) => {
 
   toDoSendToFactory(newTodo);
   myListsAddToDo(mainList[myListName], mainToDo[newTodo]);
-  console.log(mainList[myListName]);
 };
 
 // Delete the todo from myList

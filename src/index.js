@@ -41,8 +41,14 @@ import {
 import { createExtendedMainContent } from "./blocks/block-list-extended-base";
 
 myListsSendToFactory("Personal");
+addListInActiveListContainer("Personal");
+
 myListsSendToFactory("Work");
+addListInActiveListContainer("Work");
+
 myListsSendToFactory("Grocery List");
+addListInActiveListContainer("Grocery List");
+
 toDoSendToFactory("test");
 toDoSendToFactory("test2");
 toDoSendToFactory("test3");

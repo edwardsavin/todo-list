@@ -1,4 +1,5 @@
 import { myListsSendToFactory } from "../../functions/mylists/my-lists-changers";
+import { addListInActiveListContainer } from "./active-lists-container";
 
 const addElementCreateListModal = () => {
   const elementMyListsContainer = document.querySelector(".my-lists-container");
@@ -46,6 +47,8 @@ const addElementCreateListModal = () => {
       let newListName = elementModalTextInput.value.trim();
       if (newListName !== "") {
         myListsSendToFactory(newListName);
+        addListInActiveListContainer(newListName);
+
         elementModalTextInput.value = null;
         elementMyListsContainer.removeChild(elementCreateListModal);
       }
