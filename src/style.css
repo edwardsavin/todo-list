@@ -129,3 +129,11 @@ svg {
   color: gray;
   text-decoration: line-through;
 }
+
+.todo-priority-button-active {
+  background-color: hsl(335, 84%, 51%);
+}
+
+.extended-todo-main-content-priority {
+  color: hsl(335, 84%, 51%);
+}

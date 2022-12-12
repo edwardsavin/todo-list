@@ -3,6 +3,7 @@ import { toDoDelete, toDoSendToFactory } from "../todo/todo-changers";
 import {
   addListInActiveListContainer,
   deleteListFromActiveListContainer,
+  updateListTodoCount,
 } from "../../blocks/block-my-lists-elements/active-lists-container";
 import { mainToDo } from "../todo/todo-factory-function";
 
@@ -95,10 +96,24 @@ const myListsDelete = (myListName, deleteMyList = true) => {
   }
 };
 
+// Delete the todo from the list
+const myListsDeleteFromList = (myListName, toDoName, deleteFromList = true) => {
+  if (deleteFromList) {
+    delete myListName.todos[toDoName];
+  }
+};
+
 // Append todo to todos object
 const myListsAddToDo = (myListName, toDoName) => {
   let myListTodos = myListName.todos;
   myListTodos[toDoName.title] = toDoName;
+};
+
+const myListsChangeTodoList = (myListName, toDoName, newTodoList) => {
+  myListsAddToDo(newTodoList, myListName.todos[toDoName]);
+  myListsDeleteFromList(myListName, toDoName);
+
+  updateListTodoCount();
 };
 
 export {
@@ -110,4 +125,5 @@ export {
   myListsCheckIfListExists,
   myListsCheckIfTodoDuplicate,
   myListsIncrementTodoCopyName,
+  myListsChangeTodoList,
 };

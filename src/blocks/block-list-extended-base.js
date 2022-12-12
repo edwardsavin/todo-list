@@ -1,4 +1,8 @@
-import { activateCheckBox } from "./block-list-extended-elements/extended-todo-checkbox";
+import { createMainContentHeader } from "./block-list-extended-elements/extended-base-header";
+import {
+  createMainContentDetails,
+  updateTodoPriorityDom,
+} from "./block-list-extended-elements/extended-base-details";
 
 const listExtendedViewElement = document.querySelector(".list-extended-view");
 
@@ -13,54 +17,20 @@ const createExtendedMainContent = (listTitle, todoName) => {
   extendedViewMainContent.id = `main-content-${todoName}`;
 
   const mainContentHeader = createMainContentHeader(listTitle, todoName);
+  const mainContentDetails = createMainContentDetails(listTitle, todoName);
 
   extendedViewMainContent.appendChild(mainContentHeader);
+  extendedViewMainContent.appendChild(mainContentDetails);
 
   extendedViewMainSection.appendChild(extendedViewMainContent);
   listExtendedViewElement.appendChild(extendedViewMainSection);
-};
 
-const createMainContentHeader = (listTitle, todoName) => {
-  const mainContentHeader = document.createElement("header");
-  mainContentHeader.classList.add("main-content-header");
-
-  const mainContentListTitle = document.createElement("div");
-  mainContentListTitle.classList.add("main-content-list-title");
-  mainContentListTitle.textContent = `My lists > ${listTitle}`;
-
-  const mainContentExtraActions = document.createElement("div");
-  mainContentExtraActions.classList.add("main-content-extra-actions");
-
-  const extraActionsMark = document.createElement("button");
-  extraActionsMark.classList.add("extra-actions-mark");
-  extraActionsMark.id = `extra-actions-mark-${todoName}`;
-  extraActionsMark.textContent = "✓";
-
-  const extraActionsClose = document.createElement("button");
-  extraActionsClose.classList.add("extra-actions-close");
-  extraActionsClose.id = `extra-actions-close-${todoName}`;
-  extraActionsClose.textContent = "X";
-
-  extraActionsMark.addEventListener("click", () => {
-    activateCheckBox(todoName, listTitle, false);
-  });
-
-  extraActionsClose.addEventListener("click", () => {
-    removeExtendedMainContent();
-  });
-
-  mainContentExtraActions.appendChild(extraActionsMark);
-  mainContentExtraActions.appendChild(extraActionsClose);
-
-  mainContentHeader.appendChild(mainContentListTitle);
-  mainContentHeader.appendChild(mainContentExtraActions);
-
-  return mainContentHeader;
+  updateTodoPriorityDom(listTitle, todoName);
 };
 
 // Remove the extended view main content from the DOM
 const removeExtendedMainContent = () => {
-  const extendedViewMainContent = document.querySelector(
+  const extendedViewMainContent = extendedViewMainSection.querySelector(
     ".extended-view-main-content"
   );
 

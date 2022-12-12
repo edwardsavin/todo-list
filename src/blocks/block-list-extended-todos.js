@@ -12,6 +12,7 @@ import {
 } from "./block-list-extended-elements/extended-todo-checkbox";
 import { updateListTodoCount } from "./block-my-lists-elements/active-lists-container";
 import { createExtendedMainContent } from "./block-list-extended-base";
+import { checkAllTodosPriority } from "./block-list-extended-elements/extended-base-details";
 
 const listExtendedViewElement = document.querySelector(".list-extended-view");
 const extendedViewScrollSection = document.createElement("section");
@@ -71,6 +72,8 @@ const createListExtendedTodos = (listTitle) => {
 
   extendedViewScrollSection.appendChild(listExtendedTodosElement);
   listExtendedViewElement.appendChild(extendedViewScrollSection);
+
+  checkAllTodosPriority(listTitle);
 };
 
 // If an extended todos view already exists, remove it
