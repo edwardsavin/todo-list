@@ -1,4 +1,3 @@
-import { updateListTodoCount } from "../../blocks/block-my-lists-elements/active-lists-container";
 import { toDoFactory, mainToDo } from "./todo-factory-function";
 
 // TODO: mainToDo[newToDoTitle] should also have the list name.
@@ -98,7 +97,6 @@ const toDoChangeSubTaskContent = (
 const toDoDelete = (toDoName, deleteToDo = true) => {
   if (deleteToDo) {
     delete mainToDo[toDoName];
-    updateListTodoCount();
   }
 };
 

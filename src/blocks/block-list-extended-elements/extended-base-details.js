@@ -11,6 +11,7 @@ import {
   createListExtendedTodos,
   createQuickAddTodoElement,
 } from "../block-list-extended-todos";
+import { updateListTodoCount } from "../block-my-lists-elements/active-lists-container";
 
 // Create todo main content details div
 const createMainContentDetails = (listTitle, todoName) => {
@@ -210,6 +211,7 @@ const createListPicker = (listTitle, todoName) => {
       todoName,
       mainList[selectedList]
     );
+    updateListTodoCount();
 
     createListExtendedTodos(listTitle);
     createQuickAddTodoElement(listTitle);

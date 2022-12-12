@@ -6,7 +6,10 @@ import {
   removeExtendedTodosContent,
   removeExtendedTodosView,
 } from "./block-list-extended-todos";
-import { deleteListFromActiveListContainer } from "./block-my-lists-elements/active-lists-container";
+import {
+  deleteListFromActiveListContainer,
+  updateListTodoCount,
+} from "./block-my-lists-elements/active-lists-container";
 
 const createListToolBar = (listTitle) => {
   removePreviousActiveToolbar();
@@ -31,6 +34,7 @@ const createListToolBar = (listTitle) => {
       )
     ) {
       myListsDeleteAllToDos(listTitle);
+      updateListTodoCount();
       removeExtendedTodosContent();
     }
   });
