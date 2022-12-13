@@ -66,11 +66,11 @@ const createSubtaskInput = (
   subtaskInputWrapper.classList.add("subtask-input-wrapper");
   subtaskInputWrapper.id = `subtask-input-wrapper-${presentSubtaskId}`;
 
-  const subtaskCheckbox = document.createElement("input");
+  const subtaskCheckbox = document.createElement("button");
   subtaskCheckbox.classList.add("subtask-checkbox");
   subtaskCheckbox.classList.add("checkbox");
-  subtaskCheckbox.type = "checkbox";
-  subtaskCheckbox.onchange = () => {
+  subtaskCheckbox.textContent = "O"
+  subtaskCheckbox.onclick = () => {
     changeSubtaskStatus(listTitle, todoName, presentSubtaskId);
   };
 
@@ -150,9 +150,13 @@ function updateSubtaskStatusDom(listTitle, todoName) {
     if (status === true) {
       subtaskCheckBox.classList.add("subtask-checkbox-checked");
       subtaskInput.classList.add("subtask-input-checked");
+
+      subtaskCheckBox.textContent = "✓";
     } else {
       subtaskCheckBox.classList.remove("subtask-checkbox-checked");
       subtaskInput.classList.remove("subtask-input-checked");
+
+      subtaskCheckBox.textContent = "O";
     }
   });
 }

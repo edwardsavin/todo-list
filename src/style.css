@@ -132,7 +132,8 @@ svg {
 }
 
 .subtask-checkbox-checked {
-  accent-color: gray;
+  color: var(--clr-neutral-400);
+  background-color: gray;
 }
 
 .todo-priority-button-active {
