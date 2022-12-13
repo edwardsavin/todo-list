@@ -1,6 +1,7 @@
 import {
   toDoAddSubtask,
   toDoChangeSubTaskContent,
+  toDoChangeSubTaskCheckBox,
 } from "../../functions/todo/todo-changers";
 import { mainList } from "../../functions/mylists/my-lists-factory-function";
 
@@ -68,6 +69,13 @@ const createSubtaskInput = (
   subtaskCheckbox.classList.add("subtask-checkbox");
   subtaskCheckbox.classList.add("checkbox");
   subtaskCheckbox.type = "checkbox";
+  subtaskCheckbox.onchange = () => {
+    changeSubtaskStatus(
+      mainList[listTitle].todos[todoName],
+      presentSubtaskId,
+      subtaskCheckbox.checked
+    );
+  };
 
   const subtaskInput = document.createElement("input");
   subtaskInput.classList.add("subtask-input");
@@ -113,9 +121,17 @@ const createSubtaskInput = (
 function updateSubtaskDom(listTitle, todoName) {
   let todoSubtasks = mainList[listTitle].todos[todoName].subtasks;
 
-  Object.keys(todoSubtasks).forEach((subtask) => {
-    createSubtaskInput(listTitle, todoName, subtask, todoSubtasks[subtask]);
+  Object.keys(todoSubtasks).forEach((subtaskId) => {
+    let subtaskName = todoSubtasks[subtaskId].subtaskName;
+
+    createSubtaskInput(listTitle, todoName, subtaskId, subtaskName);
   });
+}
+
+function changeSubtaskStatus(todo, subtaskId, status) {
+  toDoChangeSubTaskCheckBox(todo, subtaskId);
+
+  console.log(todo);
 }
 
 export { createMainContentSubtasks, updateSubtaskDom };

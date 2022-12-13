@@ -71,9 +71,15 @@ const toDoAddSubtask = (toDoName, newSubtask) => {
   let subTaskLocation = Object.keys(toDoName.subtasks).length;
   if (toDoName.subtasks[subTaskLocation]) {
     subTaskLocation += 1;
-    toDoName.subtasks[subTaskLocation] = newSubtask;
+    toDoName.subtasks[subTaskLocation] = {
+      subtaskName: newSubtask,
+      subtaskCheckBox: false,
+    };
   } else {
-    toDoName.subtasks[subTaskLocation] = newSubtask;
+    toDoName.subtasks[subTaskLocation] = {
+      subtaskName: newSubtask,
+      subtaskCheckBox: false,
+    };
   }
 };
 
@@ -91,6 +97,15 @@ const toDoChangeSubTaskContent = (
   newSubTaskContent
 ) => {
   toDoName.subtasks[subTaskIndex] = newSubTaskContent;
+};
+
+// If subtaskCheckBox is true, change the subtask checkbox
+const toDoChangeSubTaskCheckBox = (toDoName, subTaskIndex) => {
+  if (toDoName.subtasks[subTaskIndex].subtaskCheckBox === true) {
+    toDoName.subtasks[subTaskIndex].subtaskCheckBox = false;
+  } else {
+    toDoName.subtasks[subTaskIndex].subtaskCheckBox = true;
+  }
 };
 
 // If deleteToDo is true, delete todo from mainToDo
@@ -111,5 +126,6 @@ export {
   toDoAddSubtask,
   toDoDeleteSubTask,
   toDoChangeSubTaskContent,
+  toDoChangeSubTaskCheckBox,
   toDoDelete,
 };
