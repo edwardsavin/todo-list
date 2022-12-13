@@ -125,9 +125,14 @@ svg {
   border: 2px dashed var(--clr-accent-400);
 }
 
-.todo-wrapper-checked {
+.todo-wrapper-checked,
+.subtask-input-checked {
   color: gray;
   text-decoration: line-through;
+}
+
+.subtask-checkbox-checked {
+  background-color: gray;
 }
 
 .todo-priority-button-active {

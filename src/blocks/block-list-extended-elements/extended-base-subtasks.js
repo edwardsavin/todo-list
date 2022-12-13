@@ -64,6 +64,7 @@ const createSubtaskInput = (
 
   const subtaskInputWrapper = document.createElement("div");
   subtaskInputWrapper.classList.add("subtask-input-wrapper");
+  subtaskInputWrapper.id = `subtask-input-wrapper-${presentSubtaskId}`;
 
   const subtaskCheckbox = document.createElement("input");
   subtaskCheckbox.classList.add("subtask-checkbox");
@@ -71,6 +72,7 @@ const createSubtaskInput = (
   subtaskCheckbox.type = "checkbox";
   subtaskCheckbox.onchange = () => {
     changeSubtaskStatus(
+      listTitle,
       mainList[listTitle].todos[todoName],
       presentSubtaskId,
       subtaskCheckbox.checked
@@ -128,10 +130,26 @@ function updateSubtaskDom(listTitle, todoName) {
   });
 }
 
-function changeSubtaskStatus(todo, subtaskId, status) {
+// Change subtask status
+function changeSubtaskStatus(listTitle, todo, subtaskId, status) {
   toDoChangeSubTaskCheckBox(todo, subtaskId);
 
-  console.log(todo);
+  const formattedListTitle = listTitle.toLowerCase().replaceAll(" ", "-");
+
+  const subtaskCheckBox = document.querySelector(
+    `#${formattedListTitle}-checkbox-${subtaskId}`
+  );
+  const subtaskInput = document.querySelector(
+    `#${formattedListTitle}-subtask-${subtaskId}`
+  );
+
+  if (status) {
+    subtaskCheckBox.classList.add("subtask-checkbox-checked");
+    subtaskInput.classList.add("subtask-input-checked");
+  } else {
+    subtaskCheckBox.classList.remove("subtask-checkbox-checked");
+    subtaskInput.classList.remove("subtask-input-checked");
+  }
 }
 
 export { createMainContentSubtasks, updateSubtaskDom };
