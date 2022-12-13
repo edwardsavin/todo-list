@@ -69,5 +69,7 @@ myListsAddToDo(mainList["Grocery List"], mainToDo["testD"]);
 myListsAddToDo(mainList["Grocery List"], mainToDo["testE"]);
 toDoChangeDueDate(mainToDo["testA"], "13.08.4000");
 toDoChangeDueDate(mainToDo["testD"], "13.08.4000");
+toDoAddSubtask(mainToDo["testA"], "SUBTASk A1");
+toDoAddSubtask(mainToDo["testA"], "SUBTASk B2");
 
 updateListTodoCount();

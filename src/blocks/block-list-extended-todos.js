@@ -44,6 +44,7 @@ const createListExtendedTodos = (listTitle) => {
 
     const newTodoCheckBox = document.createElement("button");
     newTodoCheckBox.classList.add("extended-todo-checkbox");
+    newTodoCheckBox.classList.add("checkbox");
     newTodoCheckBox.id = `extended-todo-checkbox-${todo}`;
     newTodoCheckBox.textContent = "O";
     newTodoCheckBox.addEventListener("click", () => {

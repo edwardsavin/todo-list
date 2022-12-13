@@ -36,7 +36,6 @@ function updateTodoNotes(listTitle, todoName) {
   let newNotes = notesInput.value.trim();
 
   toDoChangeNotes(mainList[listTitle].todos[todoName], newNotes);
-  console.log(mainList[listTitle].todos);
 }
 
 // Update the notesInput value with the todo.notes value
