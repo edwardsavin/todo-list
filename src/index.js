@@ -12,6 +12,7 @@ import {
   toDoDeleteSubTask,
   toDoChangeSubTaskContent,
   toDoDelete,
+  toDoChangeSubTaskCheckBox,
 } from "./functions/todo/todo-changers";
 import {
   myListsFactory,
@@ -70,6 +71,7 @@ myListsAddToDo(mainList["Grocery List"], mainToDo["testE"]);
 toDoChangeDueDate(mainToDo["testA"], "13.08.4000");
 toDoChangeDueDate(mainToDo["testD"], "13.08.4000");
 toDoAddSubtask(mainToDo["testA"], "SUBTASk A1");
+toDoChangeSubTaskCheckBox(mainToDo["testA"], 0);
 toDoAddSubtask(mainToDo["testA"], "SUBTASk B2");
 
 updateListTodoCount();

@@ -4,7 +4,11 @@ import {
   updateTodoPriorityDom,
 } from "./block-list-extended-elements/extended-base-details";
 import { createMainContentNotes } from "./block-list-extended-elements/extended-base-notes";
-import { createMainContentSubtasks, updateSubtaskDom } from "./block-list-extended-elements/extended-base-subtasks";
+import {
+  createMainContentSubtasks,
+  updateSubtaskDom,
+  updateSubtaskStatusDom,
+} from "./block-list-extended-elements/extended-base-subtasks";
 
 const listExtendedViewElement = document.querySelector(".list-extended-view");
 
@@ -33,6 +37,7 @@ const createExtendedMainContent = (listTitle, todoName) => {
 
   updateTodoPriorityDom(listTitle, todoName);
   updateSubtaskDom(listTitle, todoName);
+  updateSubtaskStatusDom(listTitle, todoName);
 };
 
 // Remove the extended view main content from the DOM
