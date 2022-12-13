@@ -69,7 +69,7 @@ const createSubtaskInput = (
   const subtaskCheckbox = document.createElement("button");
   subtaskCheckbox.classList.add("subtask-checkbox");
   subtaskCheckbox.classList.add("checkbox");
-  subtaskCheckbox.textContent = "O"
+  subtaskCheckbox.textContent = "O";
   subtaskCheckbox.onclick = () => {
     changeSubtaskStatus(listTitle, todoName, presentSubtaskId);
   };
@@ -104,8 +104,15 @@ const createSubtaskInput = (
 
     let subtaskInputId = `${formattedListTitle}-subtask-${mainList[listTitle].todos[todoName].subtasks.length}`;
     subtaskInput.id = `${formattedListTitle}-subtask-${subtaskInputId}`;
+
     subtaskInput.onblur = () => {
+      if (subtaskInput.value.trim() === "") {
+        subtaskInputWrapper.remove();
+      }
+
       toDoAddSubtask(mainList[listTitle].todos[todoName], subtaskInput.value);
+      updateSubtaskDom(listTitle, todoName);
+      updateSubtaskStatusDom(listTitle, todoName);
     };
   }
 
@@ -116,6 +123,8 @@ const createSubtaskInput = (
 
 // Update subtask on DOM
 function updateSubtaskDom(listTitle, todoName) {
+  removeSubtaskInputWrappers();
+
   let todoSubtasks = mainList[listTitle].todos[todoName].subtasks;
 
   Object.keys(todoSubtasks).forEach((subtaskId) => {
@@ -158,6 +167,16 @@ function updateSubtaskStatusDom(listTitle, todoName) {
 
       subtaskCheckBox.textContent = "O";
     }
+  });
+}
+
+function removeSubtaskInputWrappers() {
+  const subtaskInputWrappers = document.querySelectorAll(
+    ".subtask-input-wrapper"
+  );
+
+  subtaskInputWrappers.forEach((subtaskInputWrapper) => {
+    subtaskInputWrapper.remove();
   });
 }
 
