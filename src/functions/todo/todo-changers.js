@@ -96,7 +96,7 @@ const toDoChangeSubTaskContent = (
   subTaskIndex,
   newSubTaskContent
 ) => {
-  toDoName.subtasks[subTaskIndex] = newSubTaskContent;
+  toDoName.subtasks[subTaskIndex].subtaskName = newSubTaskContent;
 };
 
 // If subtaskCheckBox is true, change the subtask checkbox
