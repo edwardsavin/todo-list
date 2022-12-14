@@ -243,7 +243,6 @@ const editTodoPriority = (listTitle, todoName) => {
   updateTodoPriorityDom(listTitle, todoName);
 };
 
-// TODO: Solve BUG where the priority button is not updated when todo changes list
 // Update the todo priority in the DOM
 const updateTodoPriorityDom = (listTitle, todoName) => {
   const priorityStatus = mainList[listTitle].todos[todoName].priority;
@@ -255,24 +254,35 @@ const updateTodoPriorityDom = (listTitle, todoName) => {
   const extendedTodoMain = document.querySelector(
     `#extended-todo-main-content-${todoName}`
   );
-  const extendedTodoMainContent = extendedTodoMain.querySelector(
-    ".extended-todo-main-content"
-  );
 
-  if (priorityStatus === true) {
-    extendedTodoMainContent.classList.add(
-      "extended-todo-main-content-priority"
+  if (extendedTodoMain) {
+    const extendedTodoMainContent = extendedTodoMain.querySelector(
+      ".extended-todo-main-content"
     );
 
-    if (todoPriorityButton) {
-      todoPriorityButton.classList.add("todo-priority-button-active");
+    if (priorityStatus === true) {
+      extendedTodoMainContent.classList.add(
+        "extended-todo-main-content-priority"
+      );
+
+      if (todoPriorityButton) {
+        todoPriorityButton.classList.add("todo-priority-button-active");
+      }
+    } else {
+      extendedTodoMainContent.classList.remove(
+        "extended-todo-main-content-priority"
+      );
+
+      if (todoPriorityButton) {
+        todoPriorityButton.classList.remove("todo-priority-button-active");
+      }
     }
-  } else {
-    extendedTodoMainContent.classList.remove(
-      "extended-todo-main-content-priority"
-    );
+  }
 
-    if (todoPriorityButton) {
+  if (todoPriorityButton) {
+    if (priorityStatus === true) {
+      todoPriorityButton.classList.add("todo-priority-button-active");
+    } else {
       todoPriorityButton.classList.remove("todo-priority-button-active");
     }
   }
