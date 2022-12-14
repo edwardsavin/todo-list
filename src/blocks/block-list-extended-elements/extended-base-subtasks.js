@@ -37,9 +37,9 @@ const createSubtaskButton = (listTitle, todoName) => {
   createSubtaskButton.classList.add("button");
   createSubtaskButton.textContent = "Add a new subtask";
 
-  createSubtaskButton.onclick = () => {
+  createSubtaskButton.addEventListener("click", () => {
     createSubtaskInput(listTitle, todoName);
-  };
+  });
 
   createSubtaskWrapper.appendChild(createSubtaskCheckbox);
   createSubtaskWrapper.appendChild(createSubtaskButton);
@@ -95,24 +95,60 @@ const createSubtaskInput = (
         subtaskInput.value
       );
     };
+
+    subtaskInput.onkeyup = (e) => {
+      if (e.key === "Enter") {
+        toDoChangeSubTaskContent(
+          mainList[listTitle].todos[todoName],
+          presentSubtaskId,
+          subtaskInput.value
+        );
+
+        subtaskInput.blur();
+      }
+    };
   }
 
   // Else, create a new subtask input
   else {
-    let subtaskCheckboxId = `${formattedListTitle}-checkbox-${mainList[listTitle].todos[todoName].subtasks.length}`;
-    subtaskCheckbox.id = `${formattedListTitle}-checkbox-${subtaskCheckboxId}`;
+    const inputCreated = document.querySelector(
+      "#subtask-input-wrapper-undefined"
+    );
 
-    let subtaskInputId = `${formattedListTitle}-subtask-${mainList[listTitle].todos[todoName].subtasks.length}`;
-    subtaskInput.id = `${formattedListTitle}-subtask-${subtaskInputId}`;
+    if (inputCreated) {
+      return;
+    }
+
+    const subtaskCheckboxId = `${formattedListTitle}-checkbox-${mainList[listTitle].todos[todoName].subtasks.length}`;
+    subtaskCheckbox.id = subtaskCheckboxId;
+
+    const subtaskInputId = `${formattedListTitle}-subtask-${mainList[listTitle].todos[todoName].subtasks.length}`;
+    subtaskInput.id = subtaskInputId;
 
     subtaskInput.onblur = () => {
-      if (subtaskInput.value.trim() === "") {
-        subtaskInputWrapper.remove();
-      }
+      handleCreateSubtaskInput(
+        listTitle,
+        todoName,
+        subtaskInput,
+        subtaskInputWrapper
+      );
+    };
 
-      toDoAddSubtask(mainList[listTitle].todos[todoName], subtaskInput.value);
-      updateSubtaskDom(listTitle, todoName);
-      updateSubtaskStatusDom(listTitle, todoName);
+    subtaskInput.onkeyup = (e) => {
+      if (e.key === "Enter") {
+        handleCreateSubtaskInput(
+          listTitle,
+          todoName,
+          subtaskInput,
+          subtaskInputWrapper
+        );
+        createSubtaskInput(listTitle, todoName);
+
+        const subtaskInputUndefined = document.querySelector(
+          `#${formattedListTitle}-subtask-undefined`
+        );
+        subtaskInputUndefined.focus();
+      }
     };
   }
 
@@ -178,6 +214,21 @@ function removeSubtaskInputWrappers() {
   subtaskInputWrappers.forEach((subtaskInputWrapper) => {
     subtaskInputWrapper.remove();
   });
+}
+
+function handleCreateSubtaskInput(
+  listTitle,
+  todoName,
+  subtaskInput,
+  subtaskInputWrapper
+) {
+  if (subtaskInput.value.trim() === "") {
+    subtaskInputWrapper.remove();
+  } else {
+    toDoAddSubtask(mainList[listTitle].todos[todoName], subtaskInput.value);
+    updateSubtaskDom(listTitle, todoName);
+    updateSubtaskStatusDom(listTitle, todoName);
+  }
 }
 
 export { createMainContentSubtasks, updateSubtaskDom, updateSubtaskStatusDom };
