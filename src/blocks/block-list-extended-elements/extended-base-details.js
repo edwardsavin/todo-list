@@ -255,34 +255,27 @@ const updateTodoPriorityDom = (listTitle, todoName) => {
     `#extended-todo-main-content-${todoName}`
   );
 
-  if (extendedTodoMain) {
-    const extendedTodoMainContent = extendedTodoMain.querySelector(
-      ".extended-todo-main-content"
-    );
-
-    if (priorityStatus === true) {
-      extendedTodoMainContent.classList.add(
-        "extended-todo-main-content-priority"
+  // Check if the priority status is truthy
+  if (priorityStatus) {
+    // Check if the elements exist and add the active classes
+    if (extendedTodoMain) {
+      const extendedTodoMainContent = extendedTodoMain.querySelector(
+        ".extended-todo-main-content"
       );
-
-      if (todoPriorityButton) {
-        todoPriorityButton.classList.add("todo-priority-button-active");
-      }
-    } else {
-      extendedTodoMainContent.classList.remove(
-        "extended-todo-main-content-priority"
-      );
-
-      if (todoPriorityButton) {
-        todoPriorityButton.classList.remove("todo-priority-button-active");
-      }
+      extendedTodoMainContent.classList.add("extended-todo-main-content-priority");
     }
-  }
-
-  if (todoPriorityButton) {
-    if (priorityStatus === true) {
+    if (todoPriorityButton) {
       todoPriorityButton.classList.add("todo-priority-button-active");
-    } else {
+    }
+  } else {
+    // Check if the elements exist and remove the active classes
+    if (extendedTodoMain) {
+      const extendedTodoMainContent = extendedTodoMain.querySelector(
+        ".extended-todo-main-content"
+      );
+      extendedTodoMainContent.classList.remove("extended-todo-main-content-priority");
+    }
+    if (todoPriorityButton) {
       todoPriorityButton.classList.remove("todo-priority-button-active");
     }
   }
