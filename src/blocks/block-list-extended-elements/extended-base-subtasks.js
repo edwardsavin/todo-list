@@ -86,25 +86,34 @@ const createSubtaskInput = (
     subtaskCheckbox.id = `${formattedListTitle}-checkbox-${presentSubtaskId}`;
 
     subtaskInput.id = `${formattedListTitle}-subtask-${presentSubtaskId}`;
-    subtaskInput.value = `${presentSubtask}`;
+    subtaskInput.value = presentSubtask;
 
     subtaskInput.onblur = () => {
-      toDoChangeSubTaskContent(
-        mainList[listTitle].todos[todoName],
-        presentSubtaskId,
-        subtaskInput.value
-      );
-    };
-
-    subtaskInput.onkeyup = (e) => {
-      if (e.key === "Enter") {
+      if (subtaskInput.value.trim() === "") {
+        subtaskInput.value = presentSubtask;
+      } else {
         toDoChangeSubTaskContent(
           mainList[listTitle].todos[todoName],
           presentSubtaskId,
           subtaskInput.value
         );
+      }
+    };
 
-        subtaskInput.blur();
+    subtaskInput.onkeyup = (e) => {
+      if (e.key === "Enter") {
+        if (subtaskInput.value.trim() === "") {
+          subtaskInput.value = presentSubtask;
+          subtaskInput.blur();
+        } else {
+          toDoChangeSubTaskContent(
+            mainList[listTitle].todos[todoName],
+            presentSubtaskId,
+            subtaskInput.value
+          );
+
+          subtaskInput.blur();
+        }
       }
     };
   }
