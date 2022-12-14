@@ -2,6 +2,7 @@ import {
   toDoAddSubtask,
   toDoChangeSubTaskContent,
   toDoChangeSubTaskCheckBox,
+  toDoDeleteSubTask,
 } from "../../functions/todo/todo-changers";
 import { mainList } from "../../functions/mylists/my-lists-factory-function";
 
@@ -201,16 +202,30 @@ function updateSubtaskStatusDom(listTitle, todoName) {
       `#${formattedListTitle}-subtask-${subtaskId}`
     );
 
+    const subtaskRemoverButton = createSubtaskRemover(
+      listTitle,
+      todoName,
+      subtaskId
+    );
+
     if (status === true) {
       subtaskCheckBox.classList.add("subtask-checkbox-checked");
       subtaskInput.classList.add("subtask-input-checked");
 
       subtaskCheckBox.textContent = "✓";
+
+      if (!subtaskInput.nextElementSibling) {
+        subtaskInput.after(subtaskRemoverButton);
+      }
     } else {
       subtaskCheckBox.classList.remove("subtask-checkbox-checked");
       subtaskInput.classList.remove("subtask-input-checked");
 
       subtaskCheckBox.textContent = "O";
+
+      if (subtaskInput.nextElementSibling) {
+        subtaskInput.nextElementSibling.remove();
+      }
     }
   });
 }
@@ -238,6 +253,24 @@ function handleCreateSubtaskInput(
     updateSubtaskDom(listTitle, todoName);
     updateSubtaskStatusDom(listTitle, todoName);
   }
+}
+
+// Create subtask remover button
+function createSubtaskRemover(listTitle, todoName, subtaskId) {
+  const formattedListTitle = listTitle.toLowerCase().replaceAll(" ", "-");
+
+  const subtaskRemover = document.createElement("button");
+  subtaskRemover.classList.add("subtask-remover");
+  subtaskRemover.id = `${formattedListTitle}-subtask-remover-${subtaskId}`;
+  subtaskRemover.textContent = "X";
+
+  subtaskRemover.onclick = () => {
+    toDoDeleteSubTask(mainList[listTitle].todos[todoName], subtaskId);
+    updateSubtaskDom(listTitle, todoName);
+    updateSubtaskStatusDom(listTitle, todoName);
+  };
+
+  return subtaskRemover;
 }
 
 export { createMainContentSubtasks, updateSubtaskDom, updateSubtaskStatusDom };
