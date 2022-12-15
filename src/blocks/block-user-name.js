@@ -15,7 +15,7 @@ function updateUserName(userObject, localStorage = false) {
   if (localStorage) {
     elementUserName.textContent = userObject.userName;
   } else {
-    let newUserName = elementUserName.value;
+    let newUserName = elementUserName.value.trim();
 
     userChangeName(userObject, newUserName);
   }
