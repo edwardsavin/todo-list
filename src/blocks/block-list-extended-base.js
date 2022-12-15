@@ -10,7 +10,7 @@ import {
   updateSubtaskStatusDom,
 } from "./block-list-extended-elements/extended-base-subtasks";
 
-const listExtendedViewElement = document.querySelector(".list-extended-view");
+const extendedViewArticle = document.querySelector(".extended-view-article");
 
 const extendedViewMainSection = document.createElement("section");
 extendedViewMainSection.classList.add("extended-view-main-section");
@@ -33,7 +33,7 @@ const createExtendedMainContent = (listTitle, todoName) => {
   extendedViewMainContent.appendChild(mainContentSubtasks);
 
   extendedViewMainSection.appendChild(extendedViewMainContent);
-  listExtendedViewElement.appendChild(extendedViewMainSection);
+  extendedViewArticle.appendChild(extendedViewMainSection);
 
   updateTodoPriorityDom(listTitle, todoName);
   updateSubtaskDom(listTitle, todoName);

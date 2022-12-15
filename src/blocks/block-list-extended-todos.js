@@ -14,7 +14,7 @@ import { updateListTodoCount } from "./block-my-lists-elements/active-lists-cont
 import { createExtendedMainContent } from "./block-list-extended-base";
 import { checkAllTodosPriority } from "./block-list-extended-elements/extended-base-details";
 
-const listExtendedViewElement = document.querySelector(".list-extended-view");
+const extendedViewArticle = document.querySelector(".extended-view-article");
 const extendedViewScrollSection = document.createElement("section");
 extendedViewScrollSection.classList.add("extended-view-scroll-section");
 
@@ -72,7 +72,7 @@ const createListExtendedTodos = (listTitle) => {
   });
 
   extendedViewScrollSection.appendChild(listExtendedTodosElement);
-  listExtendedViewElement.appendChild(extendedViewScrollSection);
+  extendedViewArticle.appendChild(extendedViewScrollSection);
 
   checkAllTodosPriority(listTitle);
 };
@@ -146,7 +146,7 @@ const createQuickAddTodoElement = (listTitle) => {
   quickAddTodoWrapper.appendChild(quickAddTodoButton);
 
   extendedViewScrollSection.appendChild(quickAddTodoWrapper);
-  listExtendedViewElement.appendChild(extendedViewScrollSection);
+  extendedViewArticle.appendChild(extendedViewScrollSection);
 };
 
 // Create a todo based on the input provided by the quick add todo element.
@@ -174,7 +174,7 @@ const createTodoFromQuickAdd = (
     quickAddTodoInput.value = null;
 
     extendedViewScrollSection.appendChild(quickAddTodoWrapper);
-    listExtendedViewElement.appendChild(extendedViewScrollSection);
+    extendedViewArticle.appendChild(extendedViewScrollSection);
   }
 };
 

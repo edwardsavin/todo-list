@@ -14,6 +14,9 @@ import {
 const createListToolBar = (listTitle) => {
   removePreviousActiveToolbar();
 
+  const listToolBarWrapper = document.createElement("div");
+  listToolBarWrapper.classList.add("list-tool-bar-wrapper");
+
   const listToolBarElement = document.createElement("div");
   listToolBarElement.classList.add("list-tool-bar");
 
@@ -53,7 +56,7 @@ const createListToolBar = (listTitle) => {
     ) {
       myListsDelete(listTitle);
       deleteListFromActiveListContainer(listTitle);
-      listToolBarElement.remove();
+      listToolBarWrapper.remove();
       removeExtendedTodosView();
     }
   });
@@ -62,7 +65,13 @@ const createListToolBar = (listTitle) => {
   listToolBarElement.appendChild(listToolBarDeleteTodosButton);
   listToolBarElement.appendChild(listToolBarDeleteListButton);
 
-  document.querySelector(".list-extended-view").appendChild(listToolBarElement);
+  listToolBarWrapper.appendChild(listToolBarElement);
+
+  const extendedViewArticle = document.querySelector(".extended-view-article");
+
+  document
+    .querySelector(".list-extended-view")
+    .insertBefore(listToolBarWrapper, extendedViewArticle);
 };
 
 // If a toolbar already exists, remove it
