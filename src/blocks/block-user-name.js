@@ -11,10 +11,14 @@ elementUserName.onblur = () => {
 
 // Get the new elementUserName value after out of focus
 // Update the user.userName value with the newUserName value
-function updateUserName(userObject) {
-  let newUserName = elementUserName.value;
+function updateUserName(userObject, localStorage = false) {
+  if (localStorage) {
+    elementUserName.textContent = userObject.userName;
+  } else {
+    let newUserName = elementUserName.value;
 
-  userChangeName(userObject, newUserName);
+    userChangeName(userObject, newUserName);
+  }
 }
 
 export { elementUserName, updateUserName };

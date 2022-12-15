@@ -14,29 +14,27 @@ const addListInActiveListContainer = (newListTitle) => {
     "my-lists-container-lists"
   ).childNodes;
 
-  let listAlreadyInActiveList = false;
+  // Create a Set to hold the ids of all the lists that are currently in the DOM
+  const activeListIds = new Set();
+
+  // Add the ids of all the lists in the DOM to the activeListIds Set
+  activeLists.forEach((element) => {
+    activeListIds.add(element.id.toString());
+  });
+
   let listId = "";
   let listTitle = "";
 
-  // Check if list already present in DOM
-  Object.keys(mainList).forEach((list) => {
-    listId = `list-${list}`.toLowerCase().replaceAll(" ", "-");
-    // Capitalize only the first letter
-    listTitle =
-      newListTitle.toLowerCase().charAt(0).toUpperCase() +
-      newListTitle.slice(1);
+  // Capitalize only the first letter
+  listTitle =
+    newListTitle.toLowerCase().charAt(0).toUpperCase() +
+    newListTitle.slice(1);
 
-    activeLists.forEach((element) => {
-      if (element.id.toString() === listId) {
-        listAlreadyInActiveList = true;
-      } else {
-        listAlreadyInActiveList = false;
-      }
-    });
-  });
+  // Create the id for the new list
+  listId = `list-${listTitle}`.toLowerCase().replaceAll(" ", "-");
 
-  // If list is not present in DOM, create and append it to elementActiveLists
-  if (!listAlreadyInActiveList) {
+  // If the list is not already in the DOM, add it
+  if (!activeListIds.has(listId)) {
     let newList = document.createElement("li");
     newList.setAttribute("id", listId);
     newList.textContent = listTitle;

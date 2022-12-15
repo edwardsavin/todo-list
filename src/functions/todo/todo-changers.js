@@ -1,6 +1,6 @@
 import { toDoFactory, mainToDo } from "./todo-factory-function";
+import { saveToLocalStorage } from "../localStorage";
 
-// TODO: mainToDo[newToDoTitle] should also have the list name.
 // Send todo to factory and append to mainToDo;
 const toDoSendToFactory = (
   newToDoTitle,
@@ -22,16 +22,22 @@ const toDoSendToFactory = (
       subtasks
     );
   }
+
+  saveToLocalStorage();
 };
 
 // Change todo object.title
 const toDoChangeTitle = (toDoName, newTitle) => {
   toDoName.title = newTitle;
+
+  saveToLocalStorage();
 };
 
 // Change todo object.description
 const toDoChangeDescription = (toDoName, newDescription) => {
   toDoName.description = newDescription;
+
+  saveToLocalStorage();
 };
 
 // If changeCheckBox is true, change the todo object.checkBox
@@ -43,11 +49,15 @@ const toDoChangeCheckBox = (toDoName, changeCheckBox = true) => {
       toDoName.checkBox = true;
     }
   }
+
+  saveToLocalStorage();
 };
 
 // Change todo object.dueDate
 const toDoChangeDueDate = (toDoName, newDueDate) => {
   toDoName.dueDate = newDueDate;
+
+  saveToLocalStorage();
 };
 
 // If changePriority is true, change the todo object.priority
@@ -59,11 +69,15 @@ const toDoChangePriority = (toDoName, changePriority = true) => {
       toDoName.priority = true;
     }
   }
+
+  saveToLocalStorage();
 };
 
 // Change todo object.notes
 const toDoChangeNotes = (toDoName, newNote) => {
   toDoName.notes = newNote;
+
+  saveToLocalStorage();
 };
 
 // Add todo to object.subtasks
@@ -81,6 +95,8 @@ const toDoAddSubtask = (toDoName, newSubtask) => {
       subtaskCheckBox: false,
     };
   }
+
+  saveToLocalStorage();
 };
 
 // If deleteSubtask is true, delete the subtask from todo
@@ -88,6 +104,8 @@ const toDoDeleteSubTask = (toDoName, subTaskIndex, deleteSubtask = true) => {
   if (deleteSubtask) {
     delete toDoName.subtasks[subTaskIndex];
   }
+
+  saveToLocalStorage();
 };
 
 // Change the content of the subtask with the newSubTaskContent
@@ -97,6 +115,8 @@ const toDoChangeSubTaskContent = (
   newSubTaskContent
 ) => {
   toDoName.subtasks[subTaskIndex].subtaskName = newSubTaskContent;
+
+  saveToLocalStorage();
 };
 
 // If subtaskCheckBox is true, change the subtask checkbox
@@ -106,6 +126,8 @@ const toDoChangeSubTaskCheckBox = (toDoName, subTaskIndex) => {
   } else {
     toDoName.subtasks[subTaskIndex].subtaskCheckBox = true;
   }
+
+  saveToLocalStorage();
 };
 
 // If deleteToDo is true, delete todo from mainToDo
@@ -113,6 +135,8 @@ const toDoDelete = (toDoName, deleteToDo = true) => {
   if (deleteToDo) {
     delete mainToDo[toDoName];
   }
+
+  saveToLocalStorage();
 };
 
 export {

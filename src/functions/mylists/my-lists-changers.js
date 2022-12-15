@@ -1,6 +1,7 @@
 import { myListsFactory, mainList } from "./my-lists-factory-function";
 import { toDoDelete, toDoSendToFactory } from "../todo/todo-changers";
 import { mainToDo } from "../todo/todo-factory-function";
+import { saveToLocalStorage } from "../localStorage";
 
 // If list doesn't already exist, send it to factory and append to mainList
 const myListsSendToFactory = (newListTitle) => {
@@ -12,6 +13,8 @@ const myListsSendToFactory = (newListTitle) => {
 
     mainList[formattedNewListTitle] = myListsFactory(formattedNewListTitle);
   }
+  
+  saveToLocalStorage();
 };
 
 // Check if the list already exists in mainList
@@ -55,6 +58,8 @@ const myListsIncrementTodoCopyName = (myListName, toDoName) => {
 
   toDoSendToFactory(newTodo);
   myListsAddToDo(mainList[myListName], mainToDo[newTodo]);
+
+  saveToLocalStorage();
 };
 
 // Delete the todo from myList
@@ -64,6 +69,8 @@ const myListsDeleteToDo = (myListName, toDoName, deleteToDoFromList = true) => {
     delete myListName.todos[toDoName];
     toDoDelete(toDoName, true);
   }
+
+  saveToLocalStorage();
 };
 
 // Apply myListsDeleteToDo() to every todo in the list
@@ -74,6 +81,8 @@ const myListsDeleteAllToDos = (myListName, deleteAllTodos = true) => {
       myListsDeleteToDo(mainList[myListName], key);
     }
   }
+
+  saveToLocalStorage();
 };
 
 // If deleteMyList is true, delete the list and remove it from mainList
@@ -84,6 +93,8 @@ const myListsDelete = (myListName, deleteMyList = true) => {
 
     // Delete the list from mainList
     delete mainList[myListName];
+
+    saveToLocalStorage();
   }
 };
 
@@ -92,17 +103,23 @@ const myListsDeleteFromList = (myListName, toDoName, deleteFromList = true) => {
   if (deleteFromList) {
     delete myListName.todos[toDoName];
   }
+
+  saveToLocalStorage();
 };
 
 // Append todo to todos object
 const myListsAddToDo = (myListName, toDoName) => {
   let myListTodos = myListName.todos;
   myListTodos[toDoName.title] = toDoName;
+
+  saveToLocalStorage();
 };
 
 const myListsChangeTodoList = (myListName, toDoName, newTodoList) => {
   myListsAddToDo(newTodoList, myListName.todos[toDoName]);
   myListsDeleteFromList(myListName, toDoName);
+
+  saveToLocalStorage();
 };
 
 export {
