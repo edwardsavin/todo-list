@@ -9,6 +9,13 @@ elementUserName.onblur = () => {
   updateUserName(user1);
 };
 
+elementUserName.onkeypress = (e) => {
+  if (e.key === "Enter") {
+    updateUserName(user1);
+    elementUserName.blur();
+  }
+};
+
 // Get the new elementUserName value after out of focus
 // Update the user.userName value with the newUserName value
 function updateUserName(userObject, localStorage = false) {
