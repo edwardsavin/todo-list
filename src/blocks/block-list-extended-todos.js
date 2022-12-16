@@ -23,7 +23,6 @@ const createListExtendedTodos = (listTitle) => {
 
   const listExtendedTodosElement = document.createElement("div");
   listExtendedTodosElement.classList.add("list-extended-view-todos");
-  listExtendedTodosElement.textContent = `${listTitle} EXTENDED TEST`;
 
   // Show each todo from selected list in listExtendedTodosElement container
   Object.keys(mainList[listTitle].todos).forEach((todo) => {
