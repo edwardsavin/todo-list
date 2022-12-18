@@ -9,7 +9,7 @@ const createMainContentNotes = (listTitle, todoName) => {
 
   const notesTitle = document.createElement("h3");
   notesTitle.classList.add("notes-title");
-  notesTitle.textContent = "Notes";
+  notesTitle.textContent = "NOTES";
 
   const notesInput = document.createElement("textarea");
   notesInput.classList.add("notes-input");

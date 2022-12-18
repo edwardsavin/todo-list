@@ -14,7 +14,7 @@ const createMainContentSubtasks = (listTitle, todoName) => {
 
   const subtasksTitle = document.createElement("h3");
   subtasksTitle.classList.add("subtasks-title");
-  subtasksTitle.textContent = "Subtasks";
+  subtasksTitle.textContent = "SUBTASKS";
 
   const subtaskCreateButton = createSubtaskButton(listTitle, todoName);
 

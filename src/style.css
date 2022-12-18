@@ -7,9 +7,9 @@
   --clr-accent-400: hsl(210, 10%, 23%);
   --clr-accent-700: hsl(180, 75%, 28%);
 
-  --ff-primary: "Space Grotesk", -apple-system, BlinkMacSystemFont, avenir next,
-    avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto,
-    arial, sans-serif;
+  --ff-primary: "Inter", -apple-system, BlinkMacSystemFont, avenir next, avenir,
+    segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial,
+    sans-serif;
 
   --ff-body: var(--ff-primary);
   --ff-heading: var(--ff-primary);
@@ -35,8 +35,8 @@
 }
 
 @font-face {
-  font-family: "Space Grotesk";
-  src: url("./fonts/SpaceGrotesk-VariableFont_wght.ttf") format("truetype");
+  font-family: "Inter";
+  src: url("./fonts/Inter-VariableFont_slnt\,wght.ttf") format("truetype");
 }
 
 /* Box sizing rules */
@@ -68,6 +68,7 @@ html,
 body {
   height: 100%;
   background-color: var(--clr-neutral-400);
+  font-family: var(--ff-primary);
 }
 
 /* Set core body defaults */
@@ -119,10 +120,12 @@ svg {
   height: 100%;
   width: 100%;
   background-color: var(--clr-neutral-100);
+  box-shadow: 7px 0px 18px 0px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--clr-neutral-400);
 }
 
 #user-name {
-  font-size: var(--fs-600);
+  font-size: var(--fs-500);
   font-weight: var(--fw-regular);
   text-align: center;
   height: 2rem;
@@ -150,7 +153,7 @@ svg {
   width: 90%;
   padding-left: 1rem;
   margin-bottom: 1rem;
-  font-size: var(--fs-600);
+  font-size: var(--fs-500);
   font-weight: var(--fw-bold);
   color: var(--clr-primary-400);
 }
@@ -172,6 +175,7 @@ svg {
   padding-bottom: 0.4rem;
   padding-left: 1rem;
   align-items: center;
+  font-size: var(--fs-400);
   background-color: var(--clr-neutral-100);
   background-color: var(--clr-neutral-100);
 }
@@ -196,18 +200,21 @@ svg {
 .list-tool-bar {
   display: flex;
   justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   width: 259px;
   height: 2rem;
-  padding: 1.6rem;
+  padding: 1.3rem;
   display: flex;
   background-color: var(--clr-neutral-100);
+  border: 1px solid var(--clr-neutral-400);
   border-radius: 2rem;
   margin: 1.5rem 0;
+  box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.1);
 }
 
 .list-tool-bar-title {
-  font-size: var(--fs-600);
+  font-size: var(--fs-500);
   font-weight: var(--fw-bold);
   color: var(--clr-primary-400);
 }
@@ -222,10 +229,13 @@ svg {
 .extended-view-main-section {
   display: flex;
   flex-direction: column;
+  flex: 0.3 1;
   background-color: var(--clr-neutral-100);
+  border: 1px solid var(--clr-neutral-400);
   border-radius: 1.2rem;
   width: 25%;
   height: 100%;
+  box-shadow: 0px 3px 4px 2px rgba(0, 0, 0, 0.1);
 }
 
 .extended-view-scroll-section {
@@ -269,7 +279,7 @@ button,
   min-height: 3rem;
   gap: 0.6rem;
   border-radius: 0.7rem;
-  font-size: var(--fs-500);
+  font-size: var(--fs-400);
   font-weight: var(--fw-regular);
   color: var(--clr-primary-400);
 }
@@ -314,7 +324,8 @@ button,
 }
 
 .todo-wrapped-clicked {
-  border: 1px solid var(--clr-accent-400);
+  border: 1px solid var(--clr-accent-700);
+  box-shadow: 0px 0px 8px 7px var(--clr-neutral-400);
 }
 
 .todo-wrapper-checked,
@@ -355,8 +366,8 @@ button,
   align-items: center;
   width: 100%;
   font-size: var(--fs-300);
-  font-weight: var(--fw-light);
-  color: var(--clr-accent-400);
+  font-weight: 600;
+  color: hsl(204, 3%, 66%);
 }
 
 .main-content-extra-actions {
@@ -372,7 +383,7 @@ button,
 }
 
 .main-content-details-title {
-  font-size: var(--fs-700);
+  font-size: var(--fs-600);
   font-weight: var(--fw-bold);
   color: var(--clr-primary-400);
 }
@@ -381,6 +392,7 @@ button,
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  margin-bottom: 4px;
   align-items: center;
   width: 100%;
 }
@@ -391,14 +403,22 @@ button,
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6px;
+  padding: 6px 12px;
   min-width: 0px;
   border-radius: 1rem;
   gap: 0.5rem;
   font-size: var(--fs-350);
-  font-weight: var(--fw-bold);
-  border: 0;
+  font-weight: var(--fw-regular);
+  border: 1px solid var(--clr-neutral-400);
   cursor: pointer;
+  box-shadow: 0px -2px 15px -5px hsla(204, 6%, 83%, 0.87);
+  background-color: var(--clr-neutral-100);
+}
+
+.todo-edit-date:hover,
+.todo-move-to-list:hover,
+.todo-edit-priority:hover {
+  translate: 0 -2px;
 }
 
 .main-content-notes,
@@ -411,8 +431,9 @@ button,
 
 .notes-title,
 .subtasks-title {
-  font-size: var(--fs-500);
-  font-weight: var(--fw-regular);
+  font-size: var(--fs-300);
+  font-weight: 500;
+  letter-spacing: 1px;
   color: var(--clr-primary-400);
 }
 
@@ -423,12 +444,18 @@ button,
   width: 100%;
 }
 
+.subtask-input {
+  font-size: var(--fs-350);
+}
+
 .create-subtask-button {
   cursor: pointer;
   border: 0;
-  background-color: var(--clr-neutral-400);
+  background-color: transparent;
   color: var(--clr-accent-400);
   width: 100%;
   height: 2rem;
+  border: 1px solid var(--clr-neutral-400);
   border-radius: 1rem;
+  box-shadow: 0px 7px 7px -4px var(--clr-neutral-400);
 }
