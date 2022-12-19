@@ -24,10 +24,12 @@ const createListToolBar = (listTitle) => {
   listToolBarTitleElement.classList.add("list-tool-bar-title");
   listToolBarTitleElement.textContent = listTitle;
 
+  const listToolBarSeparator = document.createElement("div");
+  listToolBarSeparator.classList.add("list-tool-bar-separator");
+
   const listToolBarDeleteTodosButton = document.createElement("button");
   listToolBarDeleteTodosButton.setAttribute("type", "button");
   listToolBarDeleteTodosButton.id = "list-tool-bar-clear-todos";
-  listToolBarDeleteTodosButton.textContent = "X";
   listToolBarDeleteTodosButton.addEventListener("click", () => {
     if (
       confirm(
@@ -45,7 +47,6 @@ const createListToolBar = (listTitle) => {
   const listToolBarDeleteListButton = document.createElement("button");
   listToolBarDeleteListButton.setAttribute("type", "button");
   listToolBarDeleteListButton.id = "list-tool-bar-delete-list";
-  listToolBarDeleteListButton.textContent = "#";
   listToolBarDeleteListButton.addEventListener("click", () => {
     if (
       confirm(
@@ -62,6 +63,7 @@ const createListToolBar = (listTitle) => {
   });
 
   listToolBarElement.appendChild(listToolBarTitleElement);
+  listToolBarElement.appendChild(listToolBarSeparator);
   listToolBarElement.appendChild(listToolBarDeleteTodosButton);
   listToolBarElement.appendChild(listToolBarDeleteListButton);
 

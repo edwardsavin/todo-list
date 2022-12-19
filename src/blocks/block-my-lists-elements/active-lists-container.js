@@ -27,8 +27,7 @@ const addListInActiveListContainer = (newListTitle) => {
 
   // Capitalize only the first letter
   listTitle =
-    newListTitle.toLowerCase().charAt(0).toUpperCase() +
-    newListTitle.slice(1);
+    newListTitle.toLowerCase().charAt(0).toUpperCase() + newListTitle.slice(1);
 
   // Create the id for the new list
   listId = `list-${listTitle}`.toLowerCase().replaceAll(" ", "-");
@@ -67,11 +66,17 @@ const updateListTodoCount = () => {
     // Get the number of todos in the current list
     const todosCount = Object.keys(mainList[list].todos).length;
 
+    const todosCountWrapper = document.createElement("div");
+    todosCountWrapper.classList.add("todos-number-wrapper");
+
     const todosCountContainerElement = createTodosCountElement(todosCount);
     const formattedListTitle = list.toLowerCase().replaceAll(" ", "-");
     const listTitleElement = document.querySelector(
       `#list-${formattedListTitle}`
     );
+
+    const todosCountCircle = document.createElement("div");
+    todosCountCircle.classList.add("todos-number-circle");
 
     // Check if listTitleElement exists
     if (!listTitleElement) {
@@ -84,7 +89,9 @@ const updateListTodoCount = () => {
     if (todosNumberElement) {
       todosNumberElement.textContent = todosCount;
     } else {
-      listTitleElement.appendChild(todosCountContainerElement);
+      todosCountWrapper.appendChild(todosCountCircle);
+      todosCountWrapper.appendChild(todosCountContainerElement);
+      listTitleElement.appendChild(todosCountWrapper);
     }
   });
 };

@@ -29,10 +29,6 @@ const createSubtaskButton = (listTitle, todoName) => {
   const createSubtaskWrapper = document.createElement("div");
   createSubtaskWrapper.classList.add("create-subtask-wrapper");
 
-  const createSubtaskCheckbox = document.createElement("div");
-  createSubtaskCheckbox.classList.add("create-subtask-checkbox");
-  createSubtaskCheckbox.classList.add("checkbox");
-
   const createSubtaskButton = document.createElement("button");
   createSubtaskButton.classList.add("create-subtask-button");
   createSubtaskButton.classList.add("button");
@@ -42,7 +38,6 @@ const createSubtaskButton = (listTitle, todoName) => {
     createSubtaskInput(listTitle, todoName);
   });
 
-  createSubtaskWrapper.appendChild(createSubtaskCheckbox);
   createSubtaskWrapper.appendChild(createSubtaskButton);
 
   return createSubtaskWrapper;
@@ -70,7 +65,6 @@ const createSubtaskInput = (
   const subtaskCheckbox = document.createElement("button");
   subtaskCheckbox.classList.add("subtask-checkbox");
   subtaskCheckbox.classList.add("checkbox");
-  subtaskCheckbox.textContent = "O";
   subtaskCheckbox.onclick = () => {
     changeSubtaskStatus(listTitle, todoName, presentSubtaskId);
   };
@@ -212,7 +206,6 @@ function updateSubtaskStatusDom(listTitle, todoName) {
       subtaskCheckBox.classList.add("subtask-checkbox-checked");
       subtaskInput.classList.add("subtask-input-checked");
 
-      subtaskCheckBox.textContent = "✓";
 
       if (!subtaskInput.nextElementSibling) {
         subtaskInput.after(subtaskRemoverButton);
@@ -221,7 +214,6 @@ function updateSubtaskStatusDom(listTitle, todoName) {
       subtaskCheckBox.classList.remove("subtask-checkbox-checked");
       subtaskInput.classList.remove("subtask-input-checked");
 
-      subtaskCheckBox.textContent = "O";
 
       if (subtaskInput.nextElementSibling) {
         subtaskInput.nextElementSibling.remove();
@@ -262,7 +254,6 @@ function createSubtaskRemover(listTitle, todoName, subtaskId) {
   const subtaskRemover = document.createElement("button");
   subtaskRemover.classList.add("subtask-remover");
   subtaskRemover.id = `${formattedListTitle}-subtask-remover-${subtaskId}`;
-  subtaskRemover.textContent = "X";
 
   subtaskRemover.onclick = () => {
     toDoDeleteSubTask(mainList[listTitle].todos[todoName], subtaskId);

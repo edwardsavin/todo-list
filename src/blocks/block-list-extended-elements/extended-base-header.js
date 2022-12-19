@@ -16,12 +16,10 @@ const createMainContentHeader = (listTitle, todoName) => {
   const extraActionsMark = document.createElement("button");
   extraActionsMark.classList.add("extra-actions-mark");
   extraActionsMark.id = `extra-actions-mark-${todoName}`;
-  extraActionsMark.textContent = "✓";
 
   const extraActionsClose = document.createElement("button");
   extraActionsClose.classList.add("extra-actions-close");
   extraActionsClose.id = `extra-actions-close-${todoName}`;
-  extraActionsClose.textContent = "X";
 
   extraActionsMark.addEventListener("click", () => {
     activateCheckBox(todoName, listTitle, false);
