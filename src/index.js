@@ -28,7 +28,7 @@ import {
 } from "./functions/mylists/my-lists-changers";
 import { userFactory, user1 } from "./functions/user/user";
 import { userChangeName } from "./functions/user/user-functions";
-import { elementUserName, updateUserName } from "./blocks/block-user-name";
+import { elementUserName, updateUserIcon, updateUserName } from "./blocks/block-user-name";
 import { elementCreateListButton } from "./blocks/block-my-lists";
 import {
   addListInActiveListContainer,
@@ -77,9 +77,11 @@ if (JSON.parse(localStorage.getItem("mainList")) === null) {
   toDoAddSubtask(mainToDo["testA"], "SUBTASk B2");
 
   updateListTodoCount();
+  updateUserIcon();
 } else {
   loadFromLocalStorage();
   updateUserName(user1, true);
+  updateUserIcon();
 
   for (let list in mainList) {
     addListInActiveListContainer(list);

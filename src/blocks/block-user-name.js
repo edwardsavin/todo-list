@@ -41,4 +41,4 @@ function updateUserIcon() {
   }
 }
 
-export { elementUserName, updateUserName };
+export { elementUserName, updateUserName, updateUserIcon };
