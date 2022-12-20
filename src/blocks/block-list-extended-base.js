@@ -47,6 +47,7 @@ const removeExtendedMainContent = () => {
   );
 
   if (extendedViewMainContent) {
+    extendedViewMainContent.parentElement.remove();
     extendedViewMainContent.remove();
   }
 };

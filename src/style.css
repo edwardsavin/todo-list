@@ -431,10 +431,17 @@ li:hover .todos-number-circle {
   box-shadow: 0px 0px 1px 4px var(--clr-neutral-400);
 }
 
-.todo-wrapper-checked,
+.todo-wrapper-checked .extended-todo-main-content,
 .subtask-input-checked {
   color: gray;
   text-decoration: line-through;
+}
+
+.todo-wrapper-checked .extended-todo-checkbox::before {
+  font: var(--fa-font-solid);
+  font-size: var(--fs-500);
+  content: "\f058";
+  color: hsla(0, 0%, 50%, 0.753);
 }
 
 .subtask-checkbox-checked::before {
