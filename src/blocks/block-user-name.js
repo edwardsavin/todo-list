@@ -9,6 +9,10 @@ elementUserName.onblur = () => {
   updateUserName(user1);
 };
 
+elementUserName.oninput = () => {
+  updateUserIcon();
+};
+
 elementUserName.onkeypress = (e) => {
   if (e.key === "Enter") {
     updateUserName(user1);
@@ -25,6 +29,15 @@ function updateUserName(userObject, localStorage = false) {
     let newUserName = elementUserName.value.trim();
 
     userChangeName(userObject, newUserName);
+  }
+}
+
+// Update the user icon if the user name is not empty or "Enter Name"
+function updateUserIcon() {
+  if (elementUserName.value !== "Enter Name" && elementUserName.value !== "") {
+    elementUserName.parentElement.classList.add("user-name-active");
+  } else {
+    elementUserName.parentElement.classList.remove("user-name-active");
   }
 }
 

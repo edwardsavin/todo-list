@@ -138,7 +138,8 @@ svg {
   height: 2rem;
   width: 70%;
   line-height: 2rem;
-  font-size: var(--fs-450);
+  font-size: var(--fs-350);
+  font-weight: var(--fw-bold);
   color: var(--clr-accent-400);
   background-color: var(--clr-neutral-100);
 }
@@ -146,6 +147,10 @@ svg {
 .fa-user::before {
   font-size: var(--fs-500);
   color: var(--clr-accent-400);
+}
+
+.user-name-active .fa-user::before {
+  font-weight: bold;
 }
 
 .my-lists-container {
