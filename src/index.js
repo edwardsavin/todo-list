@@ -1,45 +1,22 @@
 import "./style.css";
-import { toDoFactory, mainToDo } from "./functions/todo/todo-factory-function";
+import { mainToDo } from "./functions/todo/todo-factory-function";
 import {
   toDoSendToFactory,
-  toDoChangeTitle,
-  toDoChangeDescription,
-  toDoChangeCheckBox,
   toDoChangeDueDate,
-  toDoChangePriority,
-  toDoChangeNotes,
   toDoAddSubtask,
-  toDoDeleteSubTask,
-  toDoChangeSubTaskContent,
-  toDoDelete,
   toDoChangeSubTaskCheckBox,
 } from "./functions/todo/todo-changers";
+import { mainList } from "./functions/mylists/my-lists-factory-function";
 import {
-  myListsFactory,
-  mainList,
-} from "./functions/mylists/my-lists-factory-function";
-import {
-  myListsDeleteToDo,
-  myListsDeleteAllToDos,
-  myListsDelete,
   myListsAddToDo,
   myListsSendToFactory,
-  myListsCheckIfListExists,
 } from "./functions/mylists/my-lists-changers";
-import { userFactory, user1 } from "./functions/user/user";
-import { userChangeName } from "./functions/user/user-functions";
-import { elementUserName, updateUserIcon, updateUserName } from "./blocks/block-user-name";
-import { elementCreateListButton } from "./blocks/block-my-lists";
+import { user1 } from "./functions/user/user";
+import { updateUserIcon, updateUserName } from "./blocks/block-user-name";
 import {
   addListInActiveListContainer,
   updateListTodoCount,
 } from "./blocks/block-my-lists-elements/active-lists-container";
-import { createListToolBar } from "./blocks/block-list-toolbar";
-import {
-  createListExtendedTodos,
-  createQuickAddTodoElement,
-} from "./blocks/block-list-extended-todos";
-import { createExtendedMainContent } from "./blocks/block-list-extended-base";
 import { loadFromLocalStorage } from "./functions/localStorage";
 
 if (JSON.parse(localStorage.getItem("mainList")) === null) {

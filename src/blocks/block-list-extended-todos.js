@@ -54,7 +54,7 @@ const createListExtendedTodos = (listTitle) => {
 
     const newTodoTitle = document.createElement("div");
     newTodoTitle.classList.add("extended-todo-main-title");
-    newTodoTitle.textContent = todo;
+    newTodoTitle.textContent = todo.replace(/-/g, ' ');
 
     const newTodoDate = document.createElement("div");
     newTodoDate.classList.add("extended-todo-main-date");

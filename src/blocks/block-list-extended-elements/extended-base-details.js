@@ -38,7 +38,7 @@ const createContentDetailsTitle = (todoName) => {
   const todoTitleElement = document.createElement("div");
   todoTitleElement.classList.add("main-content-details-title");
   todoTitleElement.id = `main-content-details-title-${todoName}`;
-  todoTitleElement.textContent = todoName;
+  todoTitleElement.textContent = todoName.replace(/-/g, ' ');
 
   todoTitleWrapper.appendChild(todoTitleElement);
 
