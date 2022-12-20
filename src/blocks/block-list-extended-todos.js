@@ -127,7 +127,6 @@ const createQuickAddTodoElement = (listTitle) => {
 
   const quickAddTodoButton = document.createElement("button");
   quickAddTodoButton.id = "quick-add-todo-button";
-  quickAddTodoButton.textContent = "↑";
 
   quickAddTodoInput.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {

@@ -203,6 +203,7 @@ svg {
 #my-lists-container-header-add-list,
 #list-tool-bar-clear-todos,
 #list-tool-bar-delete-list,
+#quick-add-todo-button,
 .extended-todo-checkbox,
 .subtask-checkbox,
 .subtask-remover,
@@ -518,6 +519,19 @@ li:hover .todos-number-circle {
   padding-left: 2%;
   padding-right: 2%;
   font-size: var(--fs-400);
+}
+
+#quick-add-todo-button::before {
+  font: var(--fa-font-regular);
+  font-size: var(--fs-900);
+  content: "\f35b";
+  color: hsla(0, 0%, 50%, 0.26);
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: var(--clr-neutral-100);
+}
+
+#quick-add-todo-button:hover::before {
+  color: var(--clr-accent-700);
 }
 
 .todo-wrapped-clicked {
