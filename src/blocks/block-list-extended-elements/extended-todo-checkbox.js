@@ -1,6 +1,7 @@
 import { mainList } from "../../functions/mylists/my-lists-factory-function";
 import { toDoChangeCheckBox } from "../../functions/todo/todo-changers";
 import { mainToDo } from "../../functions/todo/todo-factory-function";
+import { disableMainContentElements } from "../block-list-extended-base";
 
 const activateCheckBox = (todoName, listName, checkboxPressed = false) => {
   const mainContent = document.querySelector(
@@ -12,11 +13,13 @@ const activateCheckBox = (todoName, listName, checkboxPressed = false) => {
   if (checkboxState === false) {
     toDoChangeCheckBox(mainToDo[todoName]);
     changeCheckBoxStateStyle(todoName, listName, mainContent);
+    disableMainContentElements(todoName);
   }
 
   if (checkboxState === true) {
     changeCheckBoxStateStyle(todoName, listName, mainContent);
     toDoChangeCheckBox(mainToDo[todoName]);
+    disableMainContentElements(todoName);
   }
 };
 

@@ -1,4 +1,7 @@
-import { createMainContentHeader } from "./block-list-extended-elements/extended-base-header";
+import {
+  createMainContentHeader,
+  updateMarkIconStyle,
+} from "./block-list-extended-elements/extended-base-header";
 import {
   createMainContentDetails,
   updateTodoPriorityDom,
@@ -9,6 +12,7 @@ import {
   updateSubtaskDom,
   updateSubtaskStatusDom,
 } from "./block-list-extended-elements/extended-base-subtasks";
+import { mainToDo } from "../functions/todo/todo-factory-function";
 
 const extendedViewArticle = document.querySelector(".extended-view-article");
 
@@ -38,6 +42,8 @@ const createExtendedMainContent = (listTitle, todoName) => {
   updateTodoPriorityDom(listTitle, todoName);
   updateSubtaskDom(listTitle, todoName);
   updateSubtaskStatusDom(listTitle, todoName);
+
+  disableMainContentElements(todoName);
 };
 
 // Remove the extended view main content from the DOM
@@ -63,8 +69,30 @@ const removeExtendedMainSection = () => {
   }
 };
 
+// Disable the main content elements when the todo is marked as completed
+const disableMainContentElements = (todoName) => {
+  const mainContentDetails = document.querySelector(".main-content-details");
+  const mainContentNotes = document.querySelector(".main-content-notes");
+  const mainContentSubtasks = document.querySelector(".main-content-subtasks");
+
+  if (mainToDo[todoName].checkBox === true) {
+    updateMarkIconStyle(todoName);
+
+    mainContentDetails.classList.add("content-disabled");
+    mainContentNotes.classList.add("content-disabled");
+    mainContentSubtasks.classList.add("content-disabled");
+  } else {
+    updateMarkIconStyle(todoName);
+
+    mainContentDetails.classList.remove("content-disabled");
+    mainContentNotes.classList.remove("content-disabled");
+    mainContentSubtasks.classList.remove("content-disabled");
+  }
+};
+
 export {
   createExtendedMainContent,
   removeExtendedMainContent,
   removeExtendedMainSection,
+  disableMainContentElements,
 };

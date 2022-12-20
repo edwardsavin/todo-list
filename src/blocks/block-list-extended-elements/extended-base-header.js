@@ -1,3 +1,4 @@
+import { mainToDo } from "../../functions/todo/todo-factory-function";
 import { removeExtendedMainContent } from "../block-list-extended-base";
 import { activateCheckBox } from "./extended-todo-checkbox";
 
@@ -38,4 +39,16 @@ const createMainContentHeader = (listTitle, todoName) => {
   return mainContentHeader;
 };
 
-export { createMainContentHeader };
+
+// Update the mark icon style
+const updateMarkIconStyle = (todoName) => {
+  const markIcon = document.querySelector(`#extra-actions-mark-${todoName}`);
+
+  if (mainToDo[todoName].checkBox === true) {
+    markIcon.classList.add("extra-actions-mark-checked");
+  } else {
+    markIcon.classList.remove("extra-actions-mark-checked");
+  }
+};
+
+export { createMainContentHeader, updateMarkIconStyle };

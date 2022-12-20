@@ -476,6 +476,11 @@ li:hover .todos-number-circle {
   height: 100%;
 }
 
+.content-disabled {
+  pointer-events: none;
+  opacity: 0.4;
+}
+
 .main-content-header {
   display: flex;
   justify-content: space-between;
@@ -507,6 +512,10 @@ li:hover .todos-number-circle {
 
 .extra-actions-close:hover::before,
 .extra-actions-mark:hover::before {
+  color: var(--clr-accent-700);
+}
+
+.extra-actions-mark-checked::before{
   color: var(--clr-accent-700);
 }
 
