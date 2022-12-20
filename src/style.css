@@ -115,6 +115,23 @@ svg {
   background-image: url(./imgs/background-image.webp);
 }
 
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--fs-350);
+  color: var(--clr-accent-400);
+  margin-bottom: 1rem;
+}
+
+.footer >  a {
+  color: var(--clr-accent-700);
+  font-weight: var(--fw-bold);
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
 #side-bar {
   display: flex;
   flex-direction: column;
