@@ -5,7 +5,7 @@
   --clr-neutral-400: hsl(210, 17%, 93%);
 
   --clr-accent-400: hsl(210, 10%, 23%);
-  --clr-accent-700: hsl(180, 75%, 28%);
+  --clr-accent-700: hsl(209, 100%, 50%);
 
   --ff-primary: "Inter", -apple-system, BlinkMacSystemFont, avenir next, avenir,
     segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial,
@@ -22,6 +22,7 @@
   --fs-300: 0.75rem;
   --fs-350: 0.875rem;
   --fs-400: 1rem;
+  --fs-450: 1.15rem;
   --fs-500: 1.25rem;
   --fs-600: 1.5rem;
   --fs-650: 1.6rem;
@@ -124,18 +125,27 @@ svg {
   border: 1px solid var(--clr-neutral-400);
 }
 
+.user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  gap: 12px;
+}
+
 #user-name {
-  font-size: var(--fs-500);
-  font-weight: var(--fw-regular);
-  text-align: center;
   height: 2rem;
   width: 70%;
   line-height: 2rem;
-  margin-top: 1rem;
-  margin-bottom: 4rem;
-  margin-left: 1rem;
+  font-size: var(--fs-450);
+  color: var(--clr-accent-400);
   background-color: var(--clr-neutral-100);
-  color: var(--clr-primary-400);
+}
+
+.fa-user::before {
+  font-size: var(--fs-500);
+  color: var(--clr-accent-400);
 }
 
 .my-lists-container {
@@ -205,6 +215,10 @@ svg {
   font-size: var(--fs-400);
 }
 
+#my-lists-container-header-add-list:hover {
+  color: var(--clr-accent-700);
+}
+
 .list-extended-view {
   display: flex;
   flex-direction: column;
@@ -257,6 +271,11 @@ svg {
   font-size: var(--fs-500);
   content: "\f2ed";
   color: var(--clr-accent-400);
+}
+
+#list-tool-bar-clear-todos:hover::before,
+#list-tool-bar-delete-list:hover::before {
+  color: hsl(0, 100%, 36.9%);
 }
 
 .todos-number-wrapper {
@@ -338,6 +357,14 @@ button,
   background: var(--clr-accent-700);
 }
 
+.selected-list:hover .todos-number-circle {
+  background: var(--clr-accent-700);
+}
+
+li:hover .todos-number-circle {
+  background: var(--clr-neutral-100);
+}
+
 .selected-list .todos-number {
   color: var(--clr-neutral-100);
 }
@@ -346,7 +373,7 @@ button,
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 1rem 0.5rem;;
+  padding: 1rem 0.5rem;
 }
 
 .extended-todo-wrapper {
@@ -425,7 +452,8 @@ button,
 }
 
 .extended-todo-main-content-priority {
-  color: hsl(335, 84%, 51%);
+  color: hsl(334.8, 78.5%, 45.7%);
+  font-weight: 500;
 }
 
 .extended-view-main-section {
@@ -468,6 +496,11 @@ button,
   font-size: var(--fs-500);
   content: "\f058";
   color: hsla(0, 0%, 50%, 0.753);
+}
+
+.extra-actions-close:hover::before,
+.extra-actions-mark:hover::before {
+  color: var(--clr-accent-700);
 }
 
 .main-content-details {
@@ -553,9 +586,15 @@ button,
   border: 1px solid var(--clr-neutral-400);
   border-radius: 1rem;
   box-shadow: 0px 7px 7px -4px var(--clr-neutral-400);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.create-subtask-button:hover {
+  box-shadow: 0 6px 4px var(--clr-neutral-400);
 }
 
 .todo-priority-button-active {
-  background-color: hsl(335, 84%, 51%);
-  color: var(--clr-neutral-400);
+  background-color: hsl(334.8, 78.5%, 45.7%);
+  color: var(--clr-neutral-100);
+  box-shadow: 0px 0px 0px 0px white;
 }
