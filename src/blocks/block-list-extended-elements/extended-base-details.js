@@ -73,9 +73,9 @@ const createTodoDateButton = (listTitle, todoName) => {
     mainToDo[todoName].dueDate === undefined ||
     mainToDo[todoName].dueDate === ""
   ) {
-    todoEditDateButton.textContent = "🔔 Set date";
+    todoEditDateButton.innerHTML = `<i class="fa-regular fa-bell"></i> Set date`;
   } else {
-    todoEditDateButton.textContent = `🔔 ${mainList[listTitle].todos[todoName].dueDate}`;
+    todoEditDateButton.innerHTML = `<i class="fa-regular fa-bell"></i> ${mainList[listTitle].todos[todoName].dueDate}`;
   }
 
   todoEditDateButton.addEventListener("click", () => {
@@ -148,7 +148,7 @@ const updateTodoDateDom = (listTitle, todoName) => {
   extendedTodoDate.textContent = mainList[listTitle].todos[todoName].dueDate;
 
   const todoDateButton = document.querySelector(`#todo-edit-date-${todoName}`);
-  todoDateButton.textContent = `🔔 ${mainList[listTitle].todos[todoName].dueDate}`;
+  todoDateButton.innerHTML = `<i class="fa-regular fa-bell"></i> ${mainList[listTitle].todos[todoName].dueDate}`;
 };
 
 // Create main section details todo-move-to-list button
@@ -156,7 +156,7 @@ const createMoveToListButton = (listTitle, todoName) => {
   const todoMoveToListButton = document.createElement("button");
   todoMoveToListButton.classList.add("todo-move-to-list");
   todoMoveToListButton.id = `todo-move-to-list-${todoName}`;
-  todoMoveToListButton.textContent = `📋 ${listTitle}`;
+  todoMoveToListButton.innerHTML = `<i class="fa-regular fa-file-lines"></i> ${listTitle}`;
 
   todoMoveToListButton.addEventListener("click", () => {
     createListPicker(listTitle, todoName);
@@ -233,7 +233,7 @@ const createEditPriorityButton = (listTitle, todoName) => {
   const todoEditPriorityButton = document.createElement("button");
   todoEditPriorityButton.classList.add("todo-edit-priority");
   todoEditPriorityButton.id = `todo-edit-priority-${todoName}`;
-  todoEditPriorityButton.textContent = "🔥 Set priority";
+  todoEditPriorityButton.innerHTML = `<i class="fa-solid fa-fire"></i> Set priority`;
 
   todoEditPriorityButton.addEventListener("click", () => {
     editTodoPriority(listTitle, todoName);
