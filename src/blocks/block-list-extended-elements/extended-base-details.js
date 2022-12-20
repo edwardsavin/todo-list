@@ -103,22 +103,32 @@ const createDatePicker = (listTitle, todoName) => {
   todoDatePickerLabel.for = `${todoName}-date-picker`;
 
   const todoDatePicker = document.createElement("input");
+  todoDatePicker.classList.add("todo-date-picker");
   todoDatePicker.type = "date";
   todoDatePicker.id = `${todoName}-date-picker`;
   todoDatePicker.name = `${todoName}-date-picker`;
 
+  const datePickerButtonsWrapper = document.createElement("div");
+  datePickerButtonsWrapper.classList.add("date-picker-buttons-wrapper");
+
   const datePickerSubmitButton = document.createElement("button");
+  datePickerSubmitButton.classList.add("date-picker-button");
+  datePickerSubmitButton.classList.add("date-picker-submit");
   datePickerSubmitButton.id = `${todoName}-date-picker-submit`;
   datePickerSubmitButton.textContent = "Submit";
 
   const datePickerCloseButton = document.createElement("button");
+  datePickerCloseButton.classList.add("date-picker-button");
+  datePickerCloseButton.classList.add("date-picker-close");
   datePickerCloseButton.id = `${todoName}-date-picker-close`;
   datePickerCloseButton.textContent = "Close";
 
+  datePickerButtonsWrapper.appendChild(datePickerCloseButton);
+  datePickerButtonsWrapper.appendChild(datePickerSubmitButton);
+
   todoDatePickerWrapper.appendChild(todoDatePickerLabel);
   todoDatePickerWrapper.appendChild(todoDatePicker);
-  todoDatePickerWrapper.appendChild(datePickerSubmitButton);
-  todoDatePickerWrapper.appendChild(datePickerCloseButton);
+  todoDatePickerWrapper.appendChild(datePickerButtonsWrapper);
 
   mainContentDetails.appendChild(todoDatePickerWrapper);
 

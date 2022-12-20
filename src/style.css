@@ -225,7 +225,6 @@ svg {
 }
 
 #my-lists-create-modal {
-  /* Modal container styles */
   position: fixed;
   top: 0;
   left: 0;
@@ -237,7 +236,6 @@ svg {
 }
 
 #my-lists-create-modal .modal-content {
-  /* Modal content styles */
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -252,7 +250,6 @@ svg {
 }
 
 #my-lists-create-modal .modal-title {
-  /* Modal title styles */
   align-self: flex-start;
   padding-top: 12px;
   padding-left: 20px;
@@ -264,7 +261,6 @@ svg {
 }
 
 #my-lists-create-modal .text-input {
-  /* Text input styles */
   align-self: center;
   width: 90%;
   height: 42px;
@@ -288,7 +284,6 @@ svg {
 }
 
 #my-lists-create-modal .button {
-  /* Button styles */
   width: 100%;
   height: 100%;
   border: none;
@@ -695,6 +690,57 @@ li:hover .todos-number-circle {
 .todo-move-to-list:hover,
 .todo-edit-priority:hover {
   translate: 0 -2px;
+}
+
+.todo-date-picker-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: 60%;
+  height: 6rem;
+  margin: 1rem 0;
+  border: 1px solid var(--clr-neutral-400);
+  box-shadow: 2px 4px 6px var(--clr-neutral-400);
+}
+
+.todo-date-picker {
+  text-align: center;
+  margin-right: 1rem;
+  width: 100%;
+  height: 3rem;
+  border: 1px solid var(--clr-neutral-400);
+}
+
+.todo-date-picker:hover {
+  cursor: pointer;
+  border: 1px solid var(--clr-accent-700);
+}
+
+.todo-date-picker:focus {
+  outline: none;
+}
+
+.date-picker-buttons-wrapper {
+  display: flex;
+}
+
+.date-picker-button {
+  border: 1px solid var(--clr-neutral-400);
+  cursor: pointer;
+  width: 100%;
+  height: 3rem;
+  color: var(--clr-accent-400);
+  background-color: var(--clr-neutral-100);
+  font-size: var(--fs-350);
+  font-weight: 500;
+}
+
+.date-picker-button:hover {
+  background-color: var(--clr-neutral-400);
+}
+
+.date-picker-submit {
+  color: var(--clr-accent-700);
 }
 
 .main-content-notes,
