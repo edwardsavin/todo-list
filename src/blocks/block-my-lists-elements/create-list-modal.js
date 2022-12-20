@@ -9,6 +9,9 @@ const addElementCreateListModal = () => {
     elementCreateListModal.setAttribute("id", "my-lists-create-modal");
     elementCreateListModal.classList.add("modal");
 
+    const elementModalContent = document.createElement("div");
+    elementModalContent.classList.add("modal-content");
+
     const elementModalTitle = document.createElement("div");
     elementModalTitle.classList.add("modal-title");
     elementModalTitle.textContent = "CREATE A LIST";
@@ -20,24 +23,38 @@ const addElementCreateListModal = () => {
     );
     elementModalTextInput.classList.add("text-input");
 
+    const elementModalButtonsWrapper = document.createElement("div");
+    elementModalButtonsWrapper.classList.add("modal-buttons-wrapper");
+
     const elementModalCreateButton = document.createElement("button");
-    elementModalCreateButton.textContent = "CREATE";
+    elementModalCreateButton.textContent = "Create";
     elementModalCreateButton.setAttribute("id", "button-modal-create");
     elementModalCreateButton.classList.add("button");
     elementModalCreateButton.classList.add("button-modal-create-list");
 
+    const elementModalButtonsSeparator = document.createElement("div");
+    elementModalButtonsSeparator.classList.add("modal-buttons-separator");
+
     const elementModalCancelButton = document.createElement("button");
-    elementModalCancelButton.textContent = "CANCEL";
+    elementModalCancelButton.textContent = "Cancel";
     elementModalCancelButton.setAttribute("id", "button-modal-cancel");
     elementModalCancelButton.classList.add("button");
     elementModalCancelButton.classList.add("button-modal-create-list");
 
-    elementCreateListModal.appendChild(elementModalTitle);
-    elementCreateListModal.appendChild(elementModalTextInput);
-    elementCreateListModal.appendChild(elementModalCreateButton);
-    elementCreateListModal.appendChild(elementModalCancelButton);
+    elementModalButtonsWrapper.appendChild(elementModalCancelButton);
+    elementModalButtonsWrapper.appendChild(elementModalButtonsSeparator);
+    elementModalButtonsWrapper.appendChild(elementModalCreateButton);
+
+    elementModalContent.appendChild(elementModalTitle);
+    elementModalContent.appendChild(elementModalTextInput);
+    elementModalContent.appendChild(elementModalButtonsWrapper);
+
+    elementCreateListModal.appendChild(elementModalContent);
 
     elementMyListsContainer.appendChild(elementCreateListModal);
+
+    // Focus the text input
+    elementModalTextInput.focus();
 
     /**
      * Call myListsSendToFactory and send the value from elementModalTextInput to it
@@ -60,11 +77,20 @@ const addElementCreateListModal = () => {
       elementMyListsContainer.removeChild(elementCreateListModal);
     };
 
+    // If the user press enter, call createNewList
     elementCreateListModal.addEventListener("keydown", (event) => {
       if (event.key === "Enter") {
         createNewList();
       }
     });
+
+    // If the user click outside the modal, call cancelNewList
+    elementCreateListModal.addEventListener("click", (event) => {
+      if (event.target === elementCreateListModal) {
+        cancelNewList();
+      }
+    });
+
     elementModalCreateButton.addEventListener("click", createNewList);
     elementModalCancelButton.addEventListener("click", cancelNewList);
   }
