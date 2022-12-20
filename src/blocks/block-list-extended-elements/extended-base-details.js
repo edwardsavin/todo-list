@@ -92,8 +92,11 @@ const createDatePicker = (listTitle, todoName) => {
   const todoDatePickerWrapper = document.createElement("div");
   todoDatePickerWrapper.classList.add("todo-date-picker-wrapper");
 
-  if (todoDatePickerWrapper) {
+  if (document.querySelector(".todo-date-picker-wrapper")) {
+    console.log("date picker exists");
     todoDatePickerWrapper.remove();
+
+    return;
   }
 
   const todoDatePickerLabel = document.createElement("label");
@@ -169,8 +172,10 @@ const createListPicker = (listTitle, todoName) => {
   const listPickerWrapper = document.createElement("div");
   listPickerWrapper.classList.add("list-picker-wrapper");
 
-  if (listPickerWrapper) {
+  if (document.querySelector(".list-picker-wrapper")) {
     listPickerWrapper.remove();
+
+    return;
   }
 
   const listPickerLabel = document.createElement("label");
@@ -262,7 +267,9 @@ const updateTodoPriorityDom = (listTitle, todoName) => {
       const extendedTodoMainContent = extendedTodoMain.querySelector(
         ".extended-todo-main-content"
       );
-      extendedTodoMainContent.classList.add("extended-todo-main-content-priority");
+      extendedTodoMainContent.classList.add(
+        "extended-todo-main-content-priority"
+      );
     }
     if (todoPriorityButton) {
       todoPriorityButton.classList.add("todo-priority-button-active");
@@ -273,7 +280,9 @@ const updateTodoPriorityDom = (listTitle, todoName) => {
       const extendedTodoMainContent = extendedTodoMain.querySelector(
         ".extended-todo-main-content"
       );
-      extendedTodoMainContent.classList.remove("extended-todo-main-content-priority");
+      extendedTodoMainContent.classList.remove(
+        "extended-todo-main-content-priority"
+      );
     }
     if (todoPriorityButton) {
       todoPriorityButton.classList.remove("todo-priority-button-active");
