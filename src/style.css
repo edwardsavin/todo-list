@@ -692,7 +692,8 @@ li:hover .todos-number-circle {
   translate: 0 -2px;
 }
 
-.todo-date-picker-wrapper {
+.todo-date-picker-wrapper,
+.list-picker-wrapper {
   display: flex;
   flex-direction: column;
   align-self: center;
@@ -703,7 +704,8 @@ li:hover .todos-number-circle {
   box-shadow: 2px 4px 6px var(--clr-neutral-400);
 }
 
-.todo-date-picker {
+.todo-date-picker,
+.list-picker {
   text-align: center;
   margin-right: 1rem;
   width: 100%;
@@ -711,20 +713,34 @@ li:hover .todos-number-circle {
   border: 1px solid var(--clr-neutral-400);
 }
 
-.todo-date-picker:hover {
+.list-picker {
+  background-color: var(--clr-neutral-100);
+}
+
+.list-picker:focus {
+  border: 1px solid var(--clr-accent-700);
+  border-radius: 0;
+}
+
+.todo-date-picker:hover,
+.list-picker:hover {
   cursor: pointer;
   border: 1px solid var(--clr-accent-700);
 }
 
-.todo-date-picker:focus {
+.todo-date-picker:focus,
+.list-picker:focus {
   outline: none;
+  box-shadow: 0px -2px 15px -5px hsla(204, 6%, 83%, 0.87);
 }
 
-.date-picker-buttons-wrapper {
+.date-picker-buttons-wrapper,
+.list-picker-buttons-wrapper {
   display: flex;
 }
 
-.date-picker-button {
+.date-picker-button,
+.list-picker-button {
   border: 1px solid var(--clr-neutral-400);
   cursor: pointer;
   width: 100%;
@@ -735,11 +751,13 @@ li:hover .todos-number-circle {
   font-weight: 500;
 }
 
-.date-picker-button:hover {
+.date-picker-button:hover,
+.list-picker-button:hover {
   background-color: var(--clr-neutral-400);
 }
 
-.date-picker-submit {
+.date-picker-submit,
+.list-picker-submit {
   color: var(--clr-accent-700);
 }
 

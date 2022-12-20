@@ -192,6 +192,7 @@ const createListPicker = (listTitle, todoName) => {
   listPickerLabel.for = `${todoName}-list-picker`;
 
   const listPicker = document.createElement("select");
+  listPicker.classList.add("list-picker");
   listPicker.id = `${todoName}-list-picker`;
   listPicker.name = `${todoName}-list-picker`;
 
@@ -202,18 +203,27 @@ const createListPicker = (listTitle, todoName) => {
     listPicker.appendChild(listOption);
   }
 
+  const listPickerButtonsWrapper = document.createElement("div");
+  listPickerButtonsWrapper.classList.add("list-picker-buttons-wrapper");
+
   const listPickerSubmitButton = document.createElement("button");
+  listPickerSubmitButton.classList.add("list-picker-button");
+  listPickerSubmitButton.classList.add("list-picker-submit");
   listPickerSubmitButton.id = `${todoName}-list-picker-submit`;
   listPickerSubmitButton.textContent = "Submit";
 
   const listPickerCloseButton = document.createElement("button");
+  listPickerCloseButton.classList.add("list-picker-button");
+  listPickerCloseButton.classList.add("list-picker-close");
   listPickerCloseButton.id = `${todoName}-list-picker-close`;
   listPickerCloseButton.textContent = "Close";
 
+  listPickerButtonsWrapper.appendChild(listPickerCloseButton);
+  listPickerButtonsWrapper.appendChild(listPickerSubmitButton);
+
   listPickerWrapper.appendChild(listPickerLabel);
   listPickerWrapper.appendChild(listPicker);
-  listPickerWrapper.appendChild(listPickerSubmitButton);
-  listPickerWrapper.appendChild(listPickerCloseButton);
+  listPickerWrapper.appendChild(listPickerButtonsWrapper);
 
   mainContentDetails.appendChild(listPickerWrapper);
 
