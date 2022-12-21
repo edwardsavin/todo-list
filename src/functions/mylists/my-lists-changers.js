@@ -4,16 +4,16 @@ import { mainToDo } from "../todo/todo-factory-function";
 import { saveToLocalStorage } from "../localStorage";
 
 // If list doesn't already exist, send it to factory and append to mainList
-const myListsSendToFactory = (newListTitle) => {
+const myListsSendToFactory = (newListTitle, originalListName) => {
   let listAlreadyExists = myListsCheckIfListExists(newListTitle);
 
   if (newListTitle !== null && listAlreadyExists === false) {
     // Format one or more spaces into a dash "-"
     let formattedNewListTitle = newListTitle.replace(/  +/g, " ");
 
-    mainList[formattedNewListTitle] = myListsFactory(formattedNewListTitle);
+    mainList[formattedNewListTitle] = myListsFactory(formattedNewListTitle, originalListName);
   }
-  
+
   saveToLocalStorage();
 };
 
@@ -48,15 +48,17 @@ const myListsCheckIfTodoDuplicate = (myListName, toDoName) => {
 
 const myListsIncrementTodoCopyName = (myListName, toDoName) => {
   let newTodo = toDoName;
+  let newOriginalTodo = mainToDo[toDoName].originalTodoTitle;
   let num = 1;
 
   // If the todo already exists in the list, add a number to the end of the todo until unique name is found
   while (myListsCheckIfTodoDuplicate(myListName, newTodo)) {
     newTodo = `${toDoName}${num}`;
+    newOriginalTodo = `${mainToDo[toDoName].originalTodoTitle}${num}`;
     num++;
   }
 
-  toDoSendToFactory(newTodo);
+  toDoSendToFactory(newTodo, newOriginalTodo);
   myListsAddToDo(mainList[myListName], mainToDo[newTodo]);
 
   saveToLocalStorage();

@@ -36,12 +36,18 @@ const addListInActiveListContainer = (newListTitle) => {
   if (!activeListIds.has(listId)) {
     let newList = document.createElement("li");
     newList.setAttribute("id", listId);
-    newList.textContent = listTitle;
+
+    let newListText = document.createElement("div");
+    newListText.classList.add("list-text");
+    newListText.textContent = mainList[newListTitle].originalListTitle;
+
+    newList.appendChild(newListText);
+
     newList.addEventListener("click", () => {
       changeListTitleColor(listId);
-      createListToolBar(listTitle);
-      createListExtendedTodos(listTitle);
-      createQuickAddTodoElement(listTitle);
+      createListToolBar(newListTitle);
+      createListExtendedTodos(newListTitle);
+      createQuickAddTodoElement(newListTitle);
       removeExtendedMainSection();
     });
 

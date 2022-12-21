@@ -54,7 +54,7 @@ const createListExtendedTodos = (listTitle) => {
 
     const newTodoTitle = document.createElement("div");
     newTodoTitle.classList.add("extended-todo-main-title");
-    newTodoTitle.textContent = todo.replace(/-/g, " ");
+    newTodoTitle.textContent = mainToDo[todo].originalTodoTitle;
 
     const newTodoDate = document.createElement("div");
     newTodoDate.classList.add("extended-todo-main-date");
@@ -153,14 +153,16 @@ const createTodoFromQuickAdd = (
   quickAddTodoWrapper,
   listTitle
 ) => {
+  let originalTodoTitle = quickAddTodoInput.value;
+
   let todoTitle = quickAddTodoInput.value
     .trim()
     .replace(/  +/g, " ")
-    .replaceAll(" ", "-");
+    .replace(/[^a-zA-Z0-9\-_:]/g, "-");
 
   if (todoTitle.length !== 0) {
     if (myListsCheckIfTodoDuplicate(listTitle, todoTitle) === false) {
-      toDoSendToFactory(todoTitle);
+      toDoSendToFactory(todoTitle, originalTodoTitle);
       myListsAddToDo(mainList[listTitle], mainToDo[todoTitle]);
     } else {
       myListsIncrementTodoCopyName(listTitle, todoTitle);

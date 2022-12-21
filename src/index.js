@@ -3,8 +3,7 @@ import { mainToDo } from "./functions/todo/todo-factory-function";
 import {
   toDoSendToFactory,
   toDoChangeDueDate,
-  toDoAddSubtask,
-  toDoChangeSubTaskCheckBox,
+  toDoChangeNotes,
 } from "./functions/todo/todo-changers";
 import { mainList } from "./functions/mylists/my-lists-factory-function";
 import {
@@ -20,38 +19,40 @@ import {
 import { loadFromLocalStorage } from "./functions/localStorage";
 
 if (JSON.parse(localStorage.getItem("mainList")) === null) {
-  myListsSendToFactory("Personal");
+  myListsSendToFactory("Personal", "Personal");
   addListInActiveListContainer("Personal");
 
-  myListsSendToFactory("Work");
+  myListsSendToFactory("Work", "Work");
   addListInActiveListContainer("Work");
 
-  myListsSendToFactory("Grocery List");
+  myListsSendToFactory("Grocery List", "Grocery List");
   addListInActiveListContainer("Grocery List");
 
-  toDoSendToFactory("test");
-  toDoSendToFactory("test2");
-  toDoSendToFactory("test3");
-  toDoSendToFactory("testA");
-  toDoSendToFactory("testB");
-  toDoSendToFactory("testC");
-  toDoSendToFactory("testD");
-  toDoSendToFactory("testE");
+  toDoSendToFactory("Make-this-todo-a-priority", "Make this todo a priority");
+  toDoSendToFactory("Create-your-first-task-", "Create your first task ↓");
+  myListsAddToDo(mainList["Personal"], mainToDo["Make-this-todo-a-priority"]);
+  toDoChangeDueDate(mainToDo["Make-this-todo-a-priority"], "12 Dec, 2023");
+  myListsAddToDo(mainList["Personal"], mainToDo["Create-your-first-task-"]);
 
-  myListsAddToDo(mainList["Personal"], mainToDo["test"]);
-  toDoChangeDueDate(mainToDo["test"], "23.09.4400");
-  myListsAddToDo(mainList["Personal"], mainToDo["test2"]);
-  myListsAddToDo(mainList["Work"], mainToDo["test3"]);
-  myListsAddToDo(mainList["Grocery List"], mainToDo["testA"]);
-  myListsAddToDo(mainList["Grocery List"], mainToDo["testB"]);
-  myListsAddToDo(mainList["Grocery List"], mainToDo["testC"]);
-  myListsAddToDo(mainList["Grocery List"], mainToDo["testD"]);
-  myListsAddToDo(mainList["Grocery List"], mainToDo["testE"]);
-  toDoChangeDueDate(mainToDo["testA"], "13.08.4000");
-  toDoChangeDueDate(mainToDo["testD"], "13.08.4000");
-  toDoAddSubtask(mainToDo["testA"], "SUBTASk A1");
-  toDoChangeSubTaskCheckBox(mainToDo["testA"], 0);
-  toDoAddSubtask(mainToDo["testA"], "SUBTASk B2");
+  toDoSendToFactory("Visit-Edward-s-Portfolio", "Visit Edward's Portfolio");
+  myListsAddToDo(mainList["Work"], mainToDo["Visit-Edward-s-Portfolio"]);
+  toDoChangeNotes(mainToDo["Visit-Edward-s-Portfolio"], "https://edwardcs.com/");
+
+  toDoSendToFactory("Water", "Water");
+  toDoSendToFactory("Eggs", "Eggs");
+  toDoSendToFactory("Flour", "Flour");
+  toDoSendToFactory("Apples", "Apples");
+  toDoSendToFactory("Frozen Fries", "Frozen Fries");
+  myListsAddToDo(mainList["Grocery List"], mainToDo["Water"]);
+  myListsAddToDo(mainList["Grocery List"], mainToDo["Eggs"]);
+  myListsAddToDo(mainList["Grocery List"], mainToDo["Flour"]);
+  myListsAddToDo(mainList["Grocery List"], mainToDo["Apples"]);
+  myListsAddToDo(mainList["Grocery List"], mainToDo["Frozen Fries"]);
+  toDoChangeDueDate(mainToDo["Water"], "18 July, 2023");
+  toDoChangeDueDate(mainToDo["Eggs"], "18 July, 2023");
+  toDoChangeDueDate(mainToDo["Flour"], "18 July, 2023");
+  toDoChangeDueDate(mainToDo["Apples"], "18 July, 2023");
+  toDoChangeDueDate(mainToDo["Frozen Fries"], "18 July, 2023");
 
   updateListTodoCount();
   updateUserIcon();

@@ -61,9 +61,11 @@ const addElementCreateListModal = () => {
      * After that, remove the modal
      */
     const createNewList = () => {
-      let newListName = elementModalTextInput.value.trim();
+      let originalListName = elementModalTextInput.value.trim().substring(0, 100);
+      let newListName = originalListName.replace(/[^a-zA-Z0-9\-_:]/g, "-");
+
       if (newListName !== "") {
-        myListsSendToFactory(newListName);
+        myListsSendToFactory(newListName, originalListName);
         addListInActiveListContainer(newListName);
 
         elementModalTextInput.value = null;

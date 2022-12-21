@@ -38,7 +38,7 @@ const createContentDetailsTitle = (todoName) => {
   const todoTitleElement = document.createElement("div");
   todoTitleElement.classList.add("main-content-details-title");
   todoTitleElement.id = `main-content-details-title-${todoName}`;
-  todoTitleElement.textContent = todoName.replace(/-/g, ' ');
+  todoTitleElement.textContent = mainToDo[todoName].originalTodoTitle;
 
   todoTitleWrapper.appendChild(todoTitleElement);
 
@@ -93,7 +93,6 @@ const createDatePicker = (listTitle, todoName) => {
   todoDatePickerWrapper.classList.add("todo-date-picker-wrapper");
 
   if (document.querySelector(".todo-date-picker-wrapper")) {
-    console.log("date picker exists");
     todoDatePickerWrapper.remove();
 
     return;
@@ -166,7 +165,13 @@ const createMoveToListButton = (listTitle, todoName) => {
   const todoMoveToListButton = document.createElement("button");
   todoMoveToListButton.classList.add("todo-move-to-list");
   todoMoveToListButton.id = `todo-move-to-list-${todoName}`;
-  todoMoveToListButton.innerHTML = `<i class="fa-regular fa-file-lines"></i> ${listTitle}`;
+  todoMoveToListButton.innerHTML = `<i class="fa-regular fa-file-lines"></i>`;
+
+  const todoMoveToListButtonText = document.createElement("div");
+  todoMoveToListButtonText.classList.add("todo-move-to-list-text");
+  todoMoveToListButtonText.textContent = mainList[listTitle].originalListTitle;
+
+  todoMoveToListButton.appendChild(todoMoveToListButtonText);
 
   todoMoveToListButton.addEventListener("click", () => {
     createListPicker(listTitle, todoName);
@@ -199,7 +204,7 @@ const createListPicker = (listTitle, todoName) => {
   for (let list in mainList) {
     const listOption = document.createElement("option");
     listOption.value = list;
-    listOption.textContent = list;
+    listOption.textContent = mainList[list].originalListTitle;
     listPicker.appendChild(listOption);
   }
 

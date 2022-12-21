@@ -1,3 +1,4 @@
+import { mainList } from "../../functions/mylists/my-lists-factory-function";
 import { mainToDo } from "../../functions/todo/todo-factory-function";
 import { removeExtendedMainContent } from "../block-list-extended-base";
 import { activateCheckBox } from "./extended-todo-checkbox";
@@ -9,7 +10,7 @@ const createMainContentHeader = (listTitle, todoName) => {
 
   const mainContentListTitle = document.createElement("div");
   mainContentListTitle.classList.add("main-content-list-title");
-  mainContentListTitle.textContent = `My lists > ${listTitle}`;
+  mainContentListTitle.textContent = `My lists > ${mainList[listTitle].originalListTitle}`;
 
   const mainContentExtraActions = document.createElement("div");
   mainContentExtraActions.classList.add("main-content-extra-actions");
@@ -39,15 +40,16 @@ const createMainContentHeader = (listTitle, todoName) => {
   return mainContentHeader;
 };
 
-
 // Update the mark icon style
 const updateMarkIconStyle = (todoName) => {
   const markIcon = document.querySelector(`#extra-actions-mark-${todoName}`);
 
-  if (mainToDo[todoName].checkBox === true) {
-    markIcon.classList.add("extra-actions-mark-checked");
-  } else {
-    markIcon.classList.remove("extra-actions-mark-checked");
+  if (markIcon) {
+    if (mainToDo[todoName].checkBox === true) {
+      markIcon.classList.add("extra-actions-mark-checked");
+    } else {
+      markIcon.classList.remove("extra-actions-mark-checked");
+    }
   }
 };
 

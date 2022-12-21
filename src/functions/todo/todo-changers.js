@@ -4,6 +4,7 @@ import { saveToLocalStorage } from "../localStorage";
 // Send todo to factory and append to mainToDo;
 const toDoSendToFactory = (
   newToDoTitle,
+  originalTodoTitle,
   description,
   checkBox = false,
   dueDate,
@@ -14,6 +15,7 @@ const toDoSendToFactory = (
   if (newToDoTitle !== null) {
     mainToDo[newToDoTitle] = toDoFactory(
       newToDoTitle,
+      originalTodoTitle,
       description,
       checkBox,
       dueDate,

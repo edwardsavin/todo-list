@@ -75,6 +75,10 @@ const disableMainContentElements = (todoName) => {
   const mainContentNotes = document.querySelector(".main-content-notes");
   const mainContentSubtasks = document.querySelector(".main-content-subtasks");
 
+  if (!mainContentDetails || !mainContentNotes || !mainContentSubtasks) {
+    return;
+  }
+
   if (mainToDo[todoName].checkBox === true) {
     updateMarkIconStyle(todoName);
 

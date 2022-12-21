@@ -2,6 +2,7 @@ import {
   myListsDelete,
   myListsDeleteAllToDos,
 } from "../functions/mylists/my-lists-changers";
+import { mainList } from "../functions/mylists/my-lists-factory-function";
 import {
   removeExtendedTodosContent,
   removeExtendedTodosView,
@@ -22,7 +23,7 @@ const createListToolBar = (listTitle) => {
 
   const listToolBarTitleElement = document.createElement("div");
   listToolBarTitleElement.classList.add("list-tool-bar-title");
-  listToolBarTitleElement.textContent = listTitle;
+  listToolBarTitleElement.textContent = mainList[listTitle].originalListTitle;
 
   const listToolBarSeparator = document.createElement("div");
   listToolBarSeparator.classList.add("list-tool-bar-separator");

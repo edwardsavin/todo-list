@@ -1,5 +1,6 @@
 const toDoFactory = (
   title,
+  originalTodoTitle,
   description,
   checkBox,
   dueDate,
@@ -9,6 +10,7 @@ const toDoFactory = (
 ) => {
   return {
     title,
+    originalTodoTitle,
     description,
     checkBox,
     dueDate,
