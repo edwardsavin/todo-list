@@ -1,7 +1,10 @@
+import { myListsDeleteToDo } from "../../functions/mylists/my-lists-changers";
 import { mainList } from "../../functions/mylists/my-lists-factory-function";
 import { toDoChangeCheckBox } from "../../functions/todo/todo-changers";
 import { mainToDo } from "../../functions/todo/todo-factory-function";
 import { disableMainContentElements } from "../block-list-extended-base";
+import { createListExtendedTodos } from "../block-list-extended-todos";
+import { updateListTodoCount } from "../block-my-lists-elements/active-lists-container";
 
 const activateCheckBox = (todoName, listName, checkboxPressed = false) => {
   const mainContent = document.querySelector(
@@ -30,13 +33,23 @@ const getParentElement = (element) => {
 
 // Change style of the todo considering if the checkBox is false or true
 const changeCheckBoxStateStyle = (todoName, listName, mainContent) => {
+  const todoRemoveButton = createTodoRemover(todoName, listName);
+  const todoRemoveButtonPresent = mainContent.querySelector(
+    ".extended-todo-remove-button"
+  );
+
   if (mainContent.parentElement !== null) {
     if (mainToDo[todoName].checkBox === true) {
       mainContent.classList.add("todo-wrapper-checked");
+      mainContent.appendChild(todoRemoveButton);
       getParentElement(mainContent).appendChild(mainContent);
     } else {
       mainContent.classList.remove("todo-wrapper-checked");
       moveToDoElement(todoName, listName, mainContent);
+
+      if (todoRemoveButtonPresent) {
+        todoRemoveButtonPresent.remove();
+      }
     }
   }
 };
@@ -109,5 +122,30 @@ const moveToDoElement = (todoName, listName, mainContent) => {
     );
   }
 };
+
+// Create the remove button for the to-do item
+function createTodoRemover(todoName, listName) {
+  const todoRemoveButton = document.createElement("button");
+  todoRemoveButton.classList.add("extended-todo-remove-button");
+  todoRemoveButton.id = `${listName}-todo-remove-button-${todoName}`;
+
+  todoRemoveButton.addEventListener("click", () => {
+    myListsDeleteToDo(mainList[listName], todoName, true);
+    createListExtendedTodos(listName);
+    prependExtendedView();
+    updateListTodoCount();
+  });
+
+  return todoRemoveButton;
+}
+
+function prependExtendedView() {
+  const extendedViewTodos = document.querySelector(".list-extended-view-todos");
+  const extendedViewSection = document.querySelector(
+    ".extended-view-scroll-section"
+  );
+
+  extendedViewSection.prepend(extendedViewTodos);
+}
 
 export { activateCheckBox, changeCheckBoxStateStyle };

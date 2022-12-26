@@ -36,23 +36,26 @@ if (JSON.parse(localStorage.getItem("mainList")) === null) {
 
   toDoSendToFactory("Visit-Edward-s-Portfolio", "Visit Edward's Portfolio");
   myListsAddToDo(mainList["Work"], mainToDo["Visit-Edward-s-Portfolio"]);
-  toDoChangeNotes(mainToDo["Visit-Edward-s-Portfolio"], "https://edwardcs.com/");
+  toDoChangeNotes(
+    mainToDo["Visit-Edward-s-Portfolio"],
+    "https://edwardcs.com/"
+  );
 
   toDoSendToFactory("Water", "Water");
   toDoSendToFactory("Eggs", "Eggs");
   toDoSendToFactory("Flour", "Flour");
   toDoSendToFactory("Apples", "Apples");
-  toDoSendToFactory("Frozen Fries", "Frozen Fries");
+  toDoSendToFactory("Frozen-Fries", "Frozen Fries");
   myListsAddToDo(mainList["Grocery List"], mainToDo["Water"]);
   myListsAddToDo(mainList["Grocery List"], mainToDo["Eggs"]);
   myListsAddToDo(mainList["Grocery List"], mainToDo["Flour"]);
   myListsAddToDo(mainList["Grocery List"], mainToDo["Apples"]);
-  myListsAddToDo(mainList["Grocery List"], mainToDo["Frozen Fries"]);
+  myListsAddToDo(mainList["Grocery List"], mainToDo["Frozen-Fries"]);
   toDoChangeDueDate(mainToDo["Water"], "18 July, 2023");
   toDoChangeDueDate(mainToDo["Eggs"], "18 July, 2023");
   toDoChangeDueDate(mainToDo["Flour"], "18 July, 2023");
   toDoChangeDueDate(mainToDo["Apples"], "18 July, 2023");
-  toDoChangeDueDate(mainToDo["Frozen Fries"], "18 July, 2023");
+  toDoChangeDueDate(mainToDo["Frozen-Fries"], "18 July, 2023");
 
   updateListTodoCount();
   updateUserIcon();

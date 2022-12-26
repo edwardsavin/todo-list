@@ -233,6 +233,7 @@ svg {
 #list-tool-bar-delete-list,
 #quick-add-todo-button,
 .extended-todo-checkbox,
+.extended-todo-remove-button,
 .subtask-checkbox,
 .subtask-remover,
 .extra-actions-close,
@@ -589,11 +590,16 @@ li:hover .todos-number-circle {
   color: hsla(0, 0%, 50%, 0.753);
 }
 
+.extended-todo-remove-button::before,
 .subtask-remover::before {
   font: var(--fa-font-solid);
   font-size: var(--fs-500);
   content: "\f057";
   color: hsla(0, 0%, 50%, 0.753);
+}
+
+.extended-todo-remove-button {
+  margin-left: auto;
 }
 
 .extended-todo-main-content-priority {
