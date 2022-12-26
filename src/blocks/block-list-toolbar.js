@@ -42,6 +42,7 @@ const createListToolBar = (listTitle) => {
       myListsDeleteAllToDos(listTitle);
       updateListTodoCount();
       removeExtendedTodosContent();
+      document.querySelector(".extended-view-main-section").remove();
     }
   });
 
