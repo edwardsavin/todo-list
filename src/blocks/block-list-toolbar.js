@@ -59,6 +59,7 @@ const createListToolBar = (listTitle) => {
       myListsDelete(listTitle);
       deleteListFromActiveListContainer(listTitle);
       listToolBarWrapper.remove();
+      document.querySelector(".extended-view-article").innerHTML = "";
       removeExtendedTodosView();
     }
   });
