@@ -58,7 +58,7 @@ const addListInActiveListContainer = (newListTitle) => {
 // Delete list from DOM
 const deleteListFromActiveListContainer = (listTitle) => {
   const elementList = document.getElementById(
-    `list-${listTitle}`.toLowerCase()
+    `list-${listTitle}`.toLowerCase().replace(/[^a-zA-Z0-9\-_:]/g, "-")
   );
   const elementListParent = elementList.parentElement;
 
